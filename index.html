@@ -1,1259 +1,367 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pepijn van der Stap - Offensive Security Lead at Neo Security | Protocol Engineer</title>
-    <meta name="description" content="Protocol engineer and offensive security specialist. Reverse engineering firmware, fuzzing undocumented stacks, and securing critical infrastructure. Building parsers that survive where others fail.">
-    <meta name="keywords" content="Pepijn van der Stap, Neo Security, Protocol Engineering, ICS Security, OT Security, SCADA, Reverse Engineering, Firmware Analysis, RFC, X.509, PKI, Certificate Transparency, MIDI Parser, Fuzzing">
+    <title>Pepijn van der Stap | Offensive Security & Protocol Engineering</title>
+    <meta name="description" content="A security researcher and protocol engineer with a passion for building resilient systems. Specializing in reverse engineering, critical infrastructure, and collaborative defense.">
+    <meta name="keywords" content="Pepijn van der Stap, Protocol Engineering, ICS Security, OT Security, SCADA, Reverse Engineering, Firmware Analysis, RFC, X.509, PKI, Go, C, Unix, NIST, ISO 27001, SOC 2, OWASP ASVS, Resilience">
     <meta name="author" content="Pepijn van der Stap">
     <link rel="canonical" href="https://pepijnvanderstap.nl">
-
-    <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////AMzMzP/MzMz/zMzM/8zMzP/MzMz/zMzM/8zMzP/MzMz/zMzM/8zMzP/MzMz/zMzM/////wAAAAAA////AMzMzP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/8zMzP////8AAAAAAP///wDMzMz/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP/MzMz/////AAAAAAD///8AzMzM/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/zMzM/////wAAAAAA////AMzMzP8AAAD/AP8A/wD/AP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/8zMzP////8AAAAAAP///wDMzMz/zMzM/8zMzP/MzMz/zMzM/8zMzP/MzMz/zMzM/8zMzP/MzMz/zMzM/8zMzP/MzMz/////AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA//8AAP//AAD//wAA4AcAAMADAADAAwAAwAMAAMADAADAAwAAwAMAAMADAADAAwAAwAMAAOAHAAD//wAA//8AAA==">
-
+    <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////AMzMzP/MzMz/zMzM/8zMzP/MzMz/zMzM/8zMzP/MzMz/zMzM/8zMzP/MzMz/zMzM/////wAAAAAA////AMzMzP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/8zMzP////8AAAAAAP///wDMzMz/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP/MzMz/////AAAAAAD///8AzMzM/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/zMzM/////wAAAAAA////AMzMzP8AAAD/AP8A/wD/AP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/8zMzP////8AAAAAAP///wDMzMz/zMzM/8zMzP/zMzM/8zMzP/zMzM/8zMzP/zMzM/8zMzP/zMzM/8zMzP/MzMz/////AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA//8AAP//AAD//wAA4AcAAMADAADAAwAAwAMAAMADAADAAwAAwAMAAMADAADAAwAAwAMAAOAHAAD//wAA//8AAA==">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://pepijnvanderstap.nl">
-    <meta property="og:title" content="Pepijn van der Stap - Protocol Engineer at Neo Security">
-    <meta property="og:description" content="Protocol engineer and offensive security specialist. Reverse engineering firmware, fuzzing undocumented stacks, and securing critical infrastructure.">
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
-
-<script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "Pepijn van der Stap",
-        "jobTitle": "CSO & Offensive Security Lead",
-        "worksFor": {
-            "@type": "Organization",
-            "name": "Neo Security",
-            "url": "https://neosecurity.nl"
-        },
-        "url": "https://pepijnvanderstap.nl",
-        "sameAs": [
-            "https://github.com/x-stp",
-            "https://www.linkedin.com/in/pepijn-van-der-stap-3637a2175",
-            "https://keybase.io/xstp"
-        ],
-        "knowsAbout": ["Protocol Engineering", "Offensive Security", "ICS Security", "SCADA", "Reverse Engineering", "Firmware Analysis", "PKI", "Certificate Transparency"],
-        "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "NL"
+    <meta property="og:title" content="Pepijn van der Stap - Offensive Security & Protocol Engineering">
+    <meta property="og:description" content="A security researcher and protocol engineer with a passion for building resilient systems.">
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Person",
+            "name": "Pepijn van der Stap",
+            "jobTitle": "Offensive Security & Protocol Engineer",
+            "url": "https://pepijnvanderstap.nl",
+            "sameAs": [
+                "https://github.com/x-stp",
+                "https://www.linkedin.com/in/pepijn-van-der-stap-3637a2175",
+                "https://keybase.io/xstp",
+                "https://bugcrowd.com/xstplanet",
+                "https://hackerone.com/stplanet"
+            ],
+            "knowsAbout": ["Protocol Engineering", "Offensive Security", "ICS Security", "SCADA", "Reverse Engineering", "Firmware Analysis", "PKI", "Go", "C", "Unix", "NIST", "ISO 27001", "SOC 2", "OWASP ASVS"],
+            "address": {
+                "@type": "PostalAddress",
+                "addressCountry": "NL"
+            }
         }
-    }
     </script>
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Exo+2:wght@700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
         :root {
-            --color-dark-bg: #0A0A0A;
-            --color-medium-bg: #1A1A1A;
-            --color-light-text: #F0F0F0;
-            --color-muted-text: #AAAAAA;
-            --color-accent-gold: #FFD700;
-            --color-accent-purple: #9966FF;
+            --color-black: #01020A;
+            --color-near-black: #0A0B12;
+            --color-bg: #101119;
+            --color-bg-light: #1A1B24;
+            --color-text: #EAEBF0;
+            --color-text-muted: #8892B0;
             --color-accent-green: #00FF80;
             --color-accent-cyan: #00FFFF;
-            --color-accent-red: #FF0040;
-            --color-border: #333333;
-            --shadow-subtle: rgba(0, 0, 0, 0.6);
-            --shadow-glow-soft: 0 0 5px rgba(255, 215, 0, 0.4);
-            --shadow-glow-medium: 0 0 8px rgba(255, 215, 0, 0.6);
-            --shadow-glow-strong: 0 0 12px rgba(255, 215, 0, 0.8);
-            --shadow-glow-cyber: 0 0 20px rgba(0, 255, 255, 0.5);
-            --color-ir-red-bg: #220000;
-            --color-ir-red-border: #440000;
-            --color-ir-red-glow: 0 0 8px rgba(128, 0, 0, 0.4);
-            --border-radius-main: 12px;
-        }
-
-        * {
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-            background-color: var(--color-dark-bg);
-            color: var(--color-light-text);
-            line-height: 1.6;
-            overflow-x: hidden;
-            margin: 0;
-            position: relative;
-            background-image: 
-                radial-gradient(ellipse at top left, rgba(153, 102, 255, 0.05) 0%, transparent 50%),
-                radial-gradient(ellipse at bottom right, rgba(0, 255, 128, 0.05) 0%, transparent 50%);
-        }
-
-        h1, h2, h3, h4, h5, h6 {
-            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-            color: var(--color-light-text);
-            font-weight: 700;
-            margin-bottom: 1rem;
-            letter-spacing: 0.5px;
-            text-shadow: none;
-            position: relative;
-        }
-
-        a {
-            color: var(--color-accent-green);
-            text-decoration: none;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-        }
-
-        a:hover {
-            color: var(--color-accent-gold);
-            text-decoration: none;
-            text-shadow: var(--shadow-glow-soft);
-        }
-
-        a::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: linear-gradient(90deg, var(--color-accent-green), var(--color-accent-gold));
-            transition: width 0.3s ease;
-        }
-
-        a:hover::after {
-            width: 100%;
-        }
-
-        .github-corner {
-            position: absolute;
-            top: 0;
-            right: 0;
-            border: 0;
-            fill: #000000;
-            color: #fff;
-            background-color: transparent;
-            z-index: 100;
-            transition: fill 0.3s ease;
-        }
-        .github-corner:hover {
-            fill: #000000;
-            color: #fff;
-        }
-        .github-corner .octo-arm {
-            transition: none;
-        }
-        .github-corner:hover .octo-arm {
-            transform: none;
-        }
-
-        header.line {
-            height: 5px;
-            background: linear-gradient(90deg, 
-                var(--color-accent-gold) 0%, 
-                var(--color-accent-purple) 25%, 
-                var(--color-accent-green) 50%, 
-                var(--color-accent-cyan) 75%, 
-                var(--color-accent-gold) 100%);
-            background-size: 200% 100%;
-            animation: gradient-shift 8s ease infinite;
-            box-shadow: 0 2px 10px rgba(255, 215, 0, 0.3);
-        }
-
-        @keyframes gradient-shift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        .profile.section {
-            background: linear-gradient(135deg, var(--color-medium-bg) 0%, #202020 100%);
-            padding: 3rem 1.5rem;
-            border-radius: var(--border-radius-main);
-            box-shadow: 0 8px 25px var(--shadow-subtle);
-            margin-bottom: 3rem;
-            border: 1px solid var(--color-border);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .profile.section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image:
-                linear-gradient(0deg, transparent 24%, rgba(255, 215, 0, 0.03) 25%, rgba(255, 215, 0, 0.03) 26%, transparent 27%),
-                linear-gradient(90deg, transparent 24%, rgba(255, 215, 0, 0.03) 25%, rgba(255, 215, 0, 0.03) 26%, transparent 27%);
-            background-size: 40px 40px;
-            opacity: 0.15;
-            z-index: 0;
-            border-radius: inherit;
-        }
-
-        .profile .title {
-            font-size: 3.8rem;
-            letter-spacing: 3px;
-            color: var(--color-light-text);
-            text-shadow: 
-                0 0 10px rgba(255, 215, 0, 0.5),
-                0 0 20px rgba(255, 215, 0, 0.3);
-            background: linear-gradient(45deg, var(--color-light-text), var(--color-accent-gold), var(--color-light-text));
-            background-size: 200% 100%;
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: gradient-text 5s ease infinite;
-        }
-
-        @keyframes gradient-text {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        .profile .subtitle {
-            line-height: 2.2rem;
-            margin-top: 1.2rem;
-            font-size: 1.6rem;
-            color: var(--color-accent-gold);
-            text-shadow: var(--shadow-glow-medium);
-            letter-spacing: 0.8px;
-            opacity: 0;
-            animation: fade-in-up 1s ease forwards 0.5s;
-        }
-
-        @keyframes fade-in-up {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .profile .location-info {
-            color: var(--color-muted-text) !important;
-            margin-top: auto;
-            margin-bottom: 2rem;
-            text-align: left;
-            opacity: 0;
-            animation: fade-in-up 1s ease forwards 0.7s;
-        }
-
-        @media screen and (max-width: 768px) {
-            .profile .location-info {
-                margin-right: 0 !important;
-                text-align: center !important;
-            }
-        }
-
-        .has-text-grey-darker {
-            color: var(--color-muted-text) !important;
-        }
-        .has-text-primary {
-            color: var(--color-accent-gold) !important;
-        }
-
-        .profile i.fa-lg {
-            font-size: 1.5rem;
-            margin: 0 0.5rem;
-            color: var(--color-muted-text);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .profile i.fa-lg:hover {
-            color: var(--color-accent-gold) !important;
-            text-shadow: var(--shadow-glow-soft);
-            transform: translateY(-3px) scale(1.1);
-        }
-
-        .hr {
-            height: 1px;
-            background: linear-gradient(90deg, 
-                transparent 0%, 
-                var(--color-border) 20%, 
-                var(--color-accent-gold) 50%, 
-                var(--color-border) 80%, 
-                transparent 100%);
-            margin: 0 1.5rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        section.section {
-            background-color: var(--color-medium-bg);
-            padding: 3rem 1.5rem;
-            box-shadow: 0 5px 15px var(--shadow-subtle);
-            border-radius: var(--border-radius-main);
-            margin-bottom: 2.5rem;
-            border: 1px solid var(--color-border);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        section.section:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0, 255, 128, 0.2);
-            border-color: var(--color-accent-green);
-        }
-        section.section:last-of-type {
-            margin-bottom: 0;
-        }
-
-        .content {
-            font-size: 1rem;
-            color: var(--color-light-text);
-        }
-
-        .content p {
-            margin-bottom: 1rem;
-        }
-
-        .content strong {
-            color: var(--color-accent-gold) !important;
-            text-shadow: none;
-        }
-
-        .content strong.has-text-primary {
-            color: var(--color-accent-gold) !important;
-            text-shadow: var(--shadow-glow-soft);
-        }
-        .content strong.has-text-green {
-            color: var(--color-accent-green) !important;
-            text-shadow: var(--shadow-glow-soft);
-        }
-
-        .quote-section {
-            background-color: var(--color-dark-bg);
-            border-left: 3px solid var(--color-accent-gold);
-            padding: 1.5rem 2rem;
-            margin: 2rem 0;
-            font-style: italic;
-            color: var(--color-muted-text);
-            border-radius: 0 var(--border-radius-main) var(--border-radius-main) 0;
-        }
-
-        .protocol-section {
-            background: linear-gradient(135deg, var(--color-dark-bg) 0%, rgba(255, 0, 64, 0.05) 100%);
-            border: 1px solid var(--color-border);
-            border-radius: var(--border-radius-main);
-            padding: 2rem;
-            margin: 2rem 0;
-            box-shadow: 0 3px 8px var(--shadow-subtle);
-        }
-
-        .protocol-section h3 {
-            color: var(--color-accent-red);
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
-        }
-
-        .github-projects {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .github-card {
-            background-color: var(--color-dark-bg);
-            border: 1px solid var(--color-border);
-            border-radius: var(--border-radius-main);
-            padding: 1.5rem;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .github-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: linear-gradient(90deg, var(--color-accent-green), var(--color-accent-cyan));
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.3s ease;
-        }
-
-        .github-card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .github-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 20px rgba(0, 255, 128, 0.3);
-            border-color: var(--color-accent-green);
-        }
-
-        .github-card h4 {
-            color: var(--color-accent-gold);
-            margin-bottom: 0.5rem;
-            font-size: 1.2rem;
-        }
-
-        .github-card .tech-stack {
-            color: var(--color-accent-green);
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-        }
-
-        .github-card p {
-            color: var(--color-muted-text);
-            font-size: 0.95rem;
-            line-height: 1.5;
-        }
-
-        .github-card .stats {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1rem;
-            font-size: 0.85rem;
-            color: var(--color-muted-text);
-        }
-
-        .github-card .stats span {
-            display: flex;
-            align-items: center;
-            gap: 0.3rem;
-        }
-
-        .projects-section {
-            background-color: var(--color-medium-bg);
-            padding: 3rem 1.5rem;
-            border-radius: var(--border-radius-main);
-            box-shadow: 0 5px 15px var(--shadow-subtle);
-            border: 1px solid var(--color-border);
-            margin-bottom: 2.5rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .projects-section .title {
-            color: var(--color-accent-gold) !important;
-            text-shadow: var(--shadow-glow-soft);
-        }
-
-        .contributions-section {
-            background-color: var(--color-medium-bg);
-            padding: 3rem 1.5rem;
-            border-radius: var(--border-radius-main);
-            box-shadow: 0 5px 15px var(--shadow-subtle);
-            border: 1px solid var(--color-border);
-            margin-bottom: 2.5rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .contributions-section .title {
-            color: var(--color-accent-gold) !important;
-            text-shadow: var(--shadow-glow-soft);
-            position: relative;
-            display: inline-block;
-        }
-
-        .contributions-section .title::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: linear-gradient(90deg, var(--color-accent-gold), var(--color-accent-purple));
-            transform: scaleX(0);
-            transform-origin: left;
-            animation: expand-line 1s ease forwards 0.5s;
-        }
-
-        @keyframes expand-line {
-            to { transform: scaleX(1); }
-        }
-
-        .contributions-list {
-            list-style: none;
-            padding-left: 0;
-            margin-top: 1.5rem;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1rem;
-        }
-        .contributions-list details {
-            background-color: var(--color-dark-bg);
-            border: 1px solid var(--color-border);
-            border-radius: var(--border-radius-main);
-            box-shadow: 0 2px 5px var(--shadow-subtle);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            margin-bottom: 0;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .contributions-list details:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
-            border-color: var(--color-accent-gold);
-        }
-        .contributions-list summary {
-            display: flex;
-            align-items: center;
-            padding: 0.8rem 1.2rem;
-            cursor: pointer;
-            outline: none;
-            user-select: none;
-            justify-content: space-between;
-        }
-        .contributions-list summary::-webkit-details-marker {
-            display: none;
-        }
-        .contributions-list summary::after {
-            content: "+";
-            font-size: 1.5em;
-            color: var(--color-accent-gold);
-            margin-left: 1rem;
-            transition: all 0.3s ease;
-            transform-origin: center;
-        }
-        .contributions-list details[open] summary::after {
-            content: "-";
-            transform: rotate(180deg);
-        }
-        .contributions-list .summary-content {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            flex-grow: 1;
-        }
-        .contributions-list .summary-content .org-name {
-            color: var(--color-accent-gold);
-            font-size: 1.05rem;
-            font-weight: 700;
-            text-shadow: var(--shadow-glow-soft);
-            transition: all 0.3s ease;
-        }
-
-        .contributions-list details:hover .org-name {
-            color: var(--color-accent-green);
-            text-shadow: 0 0 10px rgba(0, 255, 128, 0.5);
-        }
-
-        .contributions-list .summary-content .contribution-subtitle {
-            font-size: 0.85rem;
-            color: var(--color-muted-text);
-            line-height: 1.3;
-            text-shadow: none;
-            margin-top: 0.2rem;
-        }
-        .contributions-list .summary-content .contribution-link {
-            color: var(--color-accent-green);
-            text-decoration: none;
-            margin-left: auto;
-            flex-shrink: 0;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            font-size: 0.9em;
-            text-align: right;
-        }
-        .contributions-list .summary-content .contribution-link:hover {
-            color: var(--color-accent-gold);
-            text-shadow: var(--shadow-glow-soft);
-        }
-        .contributions-list .icon {
-            color: var(--color-accent-green);
-            margin-right: 0.8rem;
-            font-size: 1.1em;
-            flex-shrink: 0;
-            transition: all 0.3s ease;
-        }
-
-        .contributions-list details:hover .icon {
-            color: var(--color-accent-gold);
-        }
-
-        .contributions-list .details-content {
-            padding: 0.8rem 1.2rem 1.2rem;
-            color: var(--color-muted-text);
-            font-size: 0.9rem;
-            border-top: 1px solid var(--color-border);
-            margin-top: 0.5rem;
-        }
-
-        .blog-section {
-            background: linear-gradient(135deg, var(--color-medium-bg) 0%, rgba(153, 102, 255, 0.1) 100%);
-            padding: 3rem 1.5rem;
-            border-radius: var(--border-radius-main);
-            box-shadow: 0 5px 15px var(--shadow-subtle);
-            border: 1px solid var(--color-border);
-            margin-top: 2.5rem;
-            margin-bottom: 2.5rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .blog-section .title {
-            color: var(--color-accent-gold) !important;
-            text-shadow: var(--shadow-glow-soft);
-        }
-
-        .blog-article {
-            background-color: var(--color-dark-bg);
-            border: 1px solid var(--color-border);
-            border-radius: var(--border-radius-main);
-            padding: 2rem;
-            margin-bottom: 2rem;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .blog-article:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 20px rgba(255, 215, 0, 0.2);
-            border-color: var(--color-accent-gold);
-        }
-
-        .blog-article h3 {
-            color: var(--color-accent-gold);
-            margin-bottom: 0.5rem;
-            font-size: 1.5rem;
-        }
-
-        .blog-article .article-meta {
-            display: flex;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-            font-size: 0.9rem;
-            color: var(--color-muted-text);
-            flex-wrap: wrap;
-        }
-
-        .blog-article .article-meta span {
-            display: flex;
-            align-items: center;
-            gap: 0.3rem;
-        }
-
-        .blog-article .article-meta a {
-            color: var(--color-accent-green);
-            text-decoration: none;
-        }
-
-        .blog-article .article-meta a:hover {
-            color: var(--color-accent-gold);
-        }
-
-        .blog-article .read-more {
-            display: inline-block;
-            margin-top: 1rem;
-            color: var(--color-accent-green);
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-
-        .blog-article .read-more:hover {
-            color: var(--color-accent-gold);
-            transform: translateX(5px);
-        }
-
-        .blog-article .read-more::after {
-            content: ' →';
-        }
-
-        .blog-post-card {
-            background: linear-gradient(135deg, var(--color-dark-bg) 0%, rgba(153, 102, 255, 0.05) 100%);
-            border: 1px solid var(--color-border);
-            border-radius: var(--border-radius-main);
-            padding: 1.25rem;
-            margin-bottom: 1.5rem;
-            box-shadow: 0 3px 8px var(--shadow-subtle);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .incident-response-section {
-            background: linear-gradient(135deg, var(--color-ir-red-bg) 0%, rgba(255, 0, 64, 0.1) 100%);
-            padding: 3.5rem 2rem;
-            border-radius: var(--border-radius-main);
-            box-shadow: 0 5px 15px var(--shadow-subtle);
-            text-align: center;
-            border: 1px solid var(--color-ir-red-border);
-            margin-top: -0.8rem;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .incident-response-section:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 30px rgba(255, 0, 64, 0.3);
-            border-color: var(--color-accent-red);
-        }
-        .incident-response-section .title {
-            color: var(--color-light-text);
-            font-size: 2rem;
-            margin-bottom: 1rem;
-            text-shadow: 0 0 20px rgba(255, 0, 64, 0.5);
-        }
-
-        .incident-response-section p {
-            color: var(--color-muted-text);
-            font-size: 1.1rem;
-            max-width: 700px;
-            margin: 0 auto 2rem auto;
-            position: relative;
-            z-index: 1;
-        }
-
-        .incident-response-section p strong {
-            color: var(--color-accent-gold) !important;
-        }
-
-        .incident-response-section .button.is-primary {
-            background: linear-gradient(135deg, var(--color-accent-green) 0%, var(--color-accent-cyan) 100%);
-            color: var(--color-dark-bg);
-            font-weight: 700;
-            border: none;
-            padding: 1rem 2.5rem;
-            font-size: 1.1rem;
-            border-radius: 6px;
-            box-shadow: 0 0 20px rgba(0, 255, 128, 0.4);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-        }
-
-        .incident-response-section .button.is-primary:hover {
-            background: linear-gradient(135deg, var(--color-accent-gold) 0%, var(--color-accent-green) 100%);
-            transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 5px 30px rgba(255, 215, 0, 0.6);
-        }
-
-        footer.section.hero.is-dark {
-            background-color: var(--color-dark-bg);
-            color: var(--color-muted-text);
-            padding: 1.5rem 1.5rem;
-            border-radius: var(--border-radius-main);
-            margin-top: 2.5rem;
-            border-top: 1px solid var(--color-border);
-            box-shadow: none;
-            position: relative;
-            overflow: hidden;
-        }
-
-        footer .copyright p {
-            color: var(--color-muted-text);
-            font-size: 0.9rem;
-            margin-bottom: 0.6rem;
-        }
-        footer img {
-            margin-top: 1rem;
-            filter: brightness(0.8);
-            transition: filter 0.3s ease;
-        }
-        footer img:hover {
-            filter: brightness(1.2);
-        }
-        footer #scroll-top {
-            display: none;
-        }
-        footer #scroll-top a {
-            display: inline-block;
-            margin-top: 1.5rem;
-            color: var(--color-accent-gold);
-            font-size: 1.5rem;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            text-shadow: var(--shadow-glow-soft);
-        }
-
-        footer #scroll-top a:hover {
-            transform: translateY(-5px) scale(1.2);
-            color: var(--color-accent-green);
-            text-shadow: var(--shadow-glow-medium);
-        }
-        footer.line {
-            height: 4px;
-            background: linear-gradient(90deg, 
-                var(--color-accent-green) 0%, 
-                var(--color-accent-cyan) 25%, 
-                var(--color-accent-purple) 50%, 
-                var(--color-accent-gold) 75%, 
-                var(--color-accent-green) 100%);
-            background-size: 200% 100%;
-            animation: gradient-shift-reverse 8s ease infinite;
-            box-shadow: 0 -2px 20px rgba(0, 255, 128, 0.5);
-        }
-
-        @keyframes gradient-shift-reverse {
-            0% { background-position: 100% 50%; }
-            50% { background-position: 0% 50%; }
-            100% { background-position: 100% 50%; }
-        }
-
-        .seo-references {
-            display: none;
-        }
-
-        @media screen and (max-width: 768px) {
-            body {
-                font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
-            }
-            .profile .columns .column {
-                text-align: center;
-            }
-            .columns.is-desktop > .column {
-                width: 100%;
-                padding: 1rem;
-            }
-            .profile .subtitle {
-                font-size: 1rem;
-                line-height: 1.4rem;
-            }
-            .profile .title {
-                font-size: 2.2rem;
-            }
-            .profile i.fa-lg {
-                font-size: 1.2rem;
-                margin: 0 0.2rem;
-            }
-            section.section, .blog-section, .incident-response-section {
-                padding: 2rem 1rem;
-            }
-            .incident-response-section p {
-                font-size: 1rem;
-            }
-            .profile .field.is-grouped-multiline {
-                justify-content: center !important;
-            }
-            .contributions-list {
-                grid-template-columns: 1fr;
-            }
-            .contributions-list summary {
-                flex-wrap: wrap;
-                text-align: left;
-            }
-            .contributions-list summary .summary-content {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            .contributions-list summary .org-name, .contributions-list summary .contribution-subtitle, .contributions-list summary .contribution-link {
-                flex-basis: 100%;
-                text-align: left;
-                margin-left: 0;
-                margin-right: 0;
-            }
-            .contributions-list summary .icon {
-                margin-bottom: 0.5rem;
-            }
-            .contributions-list .details-content {
-                font-size: 0.8rem;
-            }
-            .github-projects {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            *, *::before, *::after {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-            }
-        }
-
-        .icon-svg {
-            width: 1.5rem;
-            height: 1.5rem;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .icon-svg:hover {
-            transform: translateY(-3px) scale(1.1);
-        }
+            --color-accent-red: #FF3B5F;
+            --color-accent-gold: #FFD700;
+            --font-primary: 'Roboto Mono', monospace;
+            --font-display: 'Exo 2', sans-serif;
+        }
+        body { background-color: var(--color-black); color: var(--color-text); font-family: var(--font-primary); }
+        .font-display { font-family: var(--font-display); }
+        .bg-black { background-color: var(--color-black); }
+        .bg-near-black { background-color: var(--color-near-black); }
+        .bg-main { background-color: var(--color-bg); }
+        .bg-light { background-color: var(--color-bg-light); }
+        .text-main { color: var(--color-text); }
+        .text-muted { color: var(--color-text-muted); }
+        .text-accent-green { color: var(--color-accent-green); }
+        .text-accent-cyan { color: var(--color-accent-cyan); }
+        .text-accent-red { color: var(--color-accent-red); }
+        .text-accent-gold { color: var(--color-accent-gold); }
+        .border-accent-green { border-color: var(--color-accent-green); }
+        .border-accent-red { border-color: var(--color-accent-red); }
+        .border-accent-gold { border-color: var(--color-accent-gold); }
+        .border-accent-cyan { border-color: var(--color-accent-cyan); }
+        .glow-green { text-shadow: 0 0 15px rgba(0, 255, 128, 0.7); }
+        .glow-red { text-shadow: 0 0 15px rgba(255, 59, 95, 0.8); }
+        #terminal-header-text::after { content: '█'; animation: blink 1s step-end infinite; }
+        @keyframes blink { 50% { opacity: 0; } }
+        .nav-link::after { content: ''; position: absolute; width: 0; height: 2px; bottom: -4px; left: 50%; transform: translateX(-50%); background-color: var(--color-accent-green); transition: width 0.3s; }
+        .nav-link:hover::after, .nav-link.active::after { width: 100%; }
+        @keyframes glitch { 2%, 64% { transform: translate(2px, 0) skew(0deg); } 4%, 60% { transform: translate(-2px, 0) skew(0deg); } 62% { transform: translate(0, 0) skew(5deg); } }
+        .phoenix-title:hover { animation: glitch 1s linear infinite; }
+        .armory-card { transform-style: preserve-3d; transition: transform 0.4s; }
+        .armory-card:hover { transform: perspective(1000px) rotateY(5deg) rotateX(5deg) scale3d(1.05, 1.05, 1.05); }
+        .github-corner:hover .octo-arm{ animation:octocat-wave 560ms ease-in-out }
+        @keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}
+        @media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}
+        .dossier-content a { color: var(--color-accent-green); }
+        .dossier-content a:hover { text-decoration: underline; color: var(--color-accent-cyan); }
+        .blog-post { border-left: 4px solid var(--color-accent-gold); transition: background-color 0.3s ease; }
+        .blog-post:hover { background-color: var(--color-bg-light); }
+        .blog-post h3 { color: var(--color-accent-gold); }
     </style>
 </head>
-<body>
-    <a class="github-corner" aria-label="View my GitHub profile!" href="https://github.com/x-stp" target="_blank" rel="noopener noreferrer">
-        <svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true">
-            <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
-            <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin:130px 106px" class="octo-arm"></path>
-            <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path>
-        </svg>
+<body class="bg-black text-main">
+    <a href="https://github.com/x-stp" class="github-corner" aria-label="View source on GitHub" target="_blank" rel="noopener noreferrer">
+        <svg width="80" height="80" viewBox="0 0 250 250" style="fill:var(--color-accent-green); color:var(--color-black); position: absolute; top: 0; border: 0; right: 0; z-index: 50;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg>
     </a>
-    <header class="line has-background-primary"></header>
-
-    <section class="profile section">
-        <div class="container">
-            <div class="columns is-vcentered is-desktop">
-                <div class="column is-two-thirds-desktop">
-                    <h1 class="title is-size-4">
-                        Pepijn van der Stap
-                    </h1>
-                    <p class="subtitle is-borderless is-size-6" style="line-height: 2rem !important;margin-top: 1.3rem;">
-                        Protocol Engineer & Offensive Security Lead @ <a href="https://neosecurity.nl" target="_blank" rel="noopener noreferrer">Neo Security</a>
-                    </p>
-                </div>
-                <div class="column is-one-third-desktop" style="display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
-                    <p class="location-info has-text-grey-darker" style="margin-top: auto; margin-bottom: 2rem; text-align: right;">Based in the Netherlands 🇳🇱</p>
-                    <div class="field is-grouped is-grouped-multiline has-margin-top-10">
-                        <p class="control">
-                            <a href="https://github.com/x-stp" aria-label="GitHub profile" target="_blank" rel="noopener noreferrer" style="color: var(--color-accent-gold);">
-                                <svg class="icon-svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                            </a>
-                        </p>
-                        <p class="control">
-                            <a href="https://www.linkedin.com/in/pepijn-van-der-stap-3637a2175" aria-label="LinkedIn profile" target="_blank" rel="noopener noreferrer">
-                                <svg class="icon-svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                            </a>
-                        </p>
-                        <p class="control">
-                            <a href="https://bugcrowd.com/xstplanet" aria-label="Bugcrowd profile" target="_blank" rel="noopener noreferrer">
-                                <svg class="icon-svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-2 16l-4-4 1.41-1.41 2.59 2.58 6.59-6.59 1.41 1.42-8 8z"/></svg>
-                            </a>
-                        </p>
-                        <p class="control">
-                            <a href="https://hackerone.com/stplanet" aria-label="HackerOne profile" target="_blank" rel="noopener noreferrer">
-                                <svg class="icon-svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.721 0-1.418-.109-2.073-.312l.286-1.308c.527.115 1.104.178 1.787.178 2.48 0 4.5-2.02 4.5-4.5s-2.02-4.5-4.5-4.5c-.683 0-1.26.063-1.787.178l-.286-1.308c.655-.203 1.352-.312 2.073-.312 3.584 0 6.5 2.916 6.5 6.5s-2.916 6.5-6.5 6.5z"/></svg>
-                            </a>
-                        </p>
-                        <p class="control">
-                            <a href="https://keybase.io/xstp" aria-label="Keybase profile" target="_blank" rel="noopener noreferrer">
-                                <svg class="icon-svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M10.446 21.371c0 .528-.428.953-.954.953-.525 0-.954-.425-.954-.953 0-.526.428-.954.953-.954.524 0 .951.431.951.955m5.922-.001c0 .528-.428.953-.955.953-.526 0-.952-.425-.952-.953 0-.526.423-.954.949-.954s.954.431.954.955"/><path d="M20.904 12.213l-.156-.204c-.046-.06-.096-.116-.143-.175-.045-.061-.094-.113-.141-.169-.104-.12-.209-.239-.319-.359l-.076-.08-.091-.099-.135-.131c-.015-.018-.032-.034-.05-.053-1.16-1.139-2.505-1.986-3.955-2.504l-.23-.078c.012-.027.024-.055.035-.083.41-1.064.367-2.223-.12-3.255-.491-1.035-1.356-1.8-2.438-2.16-.656-.216-1.23-.319-1.711-.305-.033-.105-.1-.577.496-1.848L10.663 0l-.287.399c-.33.455-.648.895-.945 1.328-.328-.345-.766-.552-1.245-.58L6.79 1.061h-.012c-.033-.003-.07-.003-.104-.003-.99 0-1.81.771-1.87 1.755l-.088 1.402v.003c-.061 1.029.727 1.915 1.755 1.979l1.002.061c-.065.84.073 1.62.405 2.306-1.346.562-2.586 1.401-3.66 2.484C.913 14.391.913 18.051.913 20.994v1.775l1.305-1.387c.266.93.652 1.807 1.145 2.615H5.06c-.833-1.114-1.419-2.426-1.68-3.848l1.913-2.03-.985 3.091 1.74-1.268c3.075-2.234 6.744-2.75 10.91-1.529 1.805.532 3.56.039 4.473-1.257l.104-.165c.091.498.141.998.141 1.496 0 1.563-.255 3.687-1.38 5.512h1.611c.776-1.563 1.181-3.432 1.181-5.512-.001-2.199-.786-4.421-2.184-6.274zM8.894 6.191c.123-1.002.578-1.949 1.23-2.97.025.05.054.097.084.144.264.398.713.625 1.199.605.217-.008.605.025 1.233.232.714.236 1.286.744 1.608 1.425s.349 1.442.079 2.149c-.173.445-.454.82-.806 1.109l-.408-.502-.002-.003c-.279-.341-.694-.535-1.134-.535-.335 0-.664.117-.925.33-.334.27-.514.66-.534 1.058-1.2-.541-1.8-1.643-1.628-3.041l.004-.001zm4.304 5.11l-.519.425c-.046.036-.095.053-.146.053-.066 0-.133-.03-.177-.085l-.111-.135c-.083-.1-.067-.25.034-.334l.51-.42-1.055-1.299c-.109-.133-.091-.33.044-.436.058-.048.126-.072.194-.072.091 0 .181.038.24.113l2.963 3.645c.109.135.09.33-.042.436-.039.029-.082.053-.126.063-.023.006-.045.009-.07.009-.09 0-.178-.04-.24-.113l-.295-.365-1.045.854c-.046.037-.1.055-.154.055-.068 0-.139-.03-.186-.09l-.477-.579c-.082-.102-.068-.252.035-.336l1.051-.857-.426-.533-.002.001zM7.753 4.866l-1.196-.075c-.255-.015-.45-.235-.435-.488l.09-1.401c.014-.245.216-.436.461-.436h.024l1.401.091c.123.006.236.06.317.152.083.094.123.21.116.336l-.007.101c-.32.567-.585 1.134-.773 1.72h.002zm12.524 11.481c-.565.805-1.687 1.081-2.924.718-3.886-1.141-7.396-.903-10.468.701l1.636-5.123-5.291 5.609c.099-3.762 2.453-6.966 5.758-8.311.471.373 1.034.66 1.673.841.16.044.322.074.48.102-.183.458-.119.997.21 1.407l.075.09c-.172.45-.105.975.221 1.374l.475.582c.266.325.659.513 1.079.513.321 0 .635-.111.886-.314l.285-.232c.174.074.367.113.566.113.113 0 .222-.01.33-.035.218-.05.424-.15.598-.291.623-.51.72-1.435.209-2.06l-1.67-2.056c.145-.117.281-.244.408-.381.135.037.271.078.4.12.266.097.533.198.795.315 1.005.445 1.954 1.1 2.771 1.897.029.03.059.055.085.083l.17.175c.038.039.076.079.111.12.079.085.16.175.239.267l.126.15c.045.053.086.104.13.16l.114.15c.04.051.079.102.117.154.838 1.149.987 2.329.404 3.157v.005z"/><path d="M7.719 4.115l-.835-.051.053-.835.834.051-.052.835z"/></svg>
-                            </a>
-                        </p>
-                        <p class="control">
-                            <a href="mailto:hello@vanderstap.info" aria-label="Send me an email">
-                                <svg class="icon-svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M0 3v18h24v-18h-24zm6.623 7.929l-4.623 5.712v-9.458l4.623 3.746zm4.141-5.929h19.035l-9.517 7.713-9.518-7.713zm5.694 7.188l3.824 3.099 3.83-3.104 5.612 6.817h-18.779l5.513-6.812zm9.208-1.264l4.616-3.741v9.348l-4.616-5.607z"/></svg>
-                            </a>
-                        </p>
-                    </div>
+    <nav id="navbar" class="bg-black/80 backdrop-blur-sm sticky top-0 z-40 transition-shadow duration-300">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between h-16">
+                <a href="#" class="font-display text-xl font-bold text-accent-green">Pepijn van der Stap</a>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#genesis" class="nav-link relative text-main hover:text-accent-green">Genesis</a>
+                    <a href="#capabilities" class="nav-link relative text-main hover:text-accent-green">Capabilities</a>
+                    <a href="#dispatch" class="nav-link relative text-main hover:text-accent-green">Dispatch</a>
+                    <a href="#contribution" class="nav-link relative text-main hover:text-accent-green">Contribution</a>
+                    <a href="#contact" class="nav-link relative text-main hover:text-accent-green">Contact</a>
                 </div>
             </div>
         </div>
-    </section>
-
-    <div class="hr"></div>
-
-    <section class="section">
-        <div class="container content">
-            <div class="columns is-desktop">
-                <div class="column is-full">
-                    <div class="incident-response-section mb-6" style="background: linear-gradient(135deg, rgba(255, 0, 64, 0.2) 0%, rgba(255, 0, 64, 0.05) 100%); border: 2px solid var(--color-accent-red);">
-                        <h2 class="title is-4" style="color: var(--color-accent-red); text-shadow: 0 0 30px rgba(255, 0, 64, 0.8);">Need Help RIGHT NOW?</h2>
-                        <p><strong>Has your company been hacked? Every minute matters.</strong></p>
-                        <p>I help organizations recover from cyber attacks. Ransomware, data theft, or unauthorized access, I've seen it all and know how to respond.</p>
-                        <p><strong>What I do:</strong></p>
-                        <ul style="text-align: left; max-width: 600px; margin: 1rem auto; list-style: none;">
-                            <li style="margin-bottom: 0.5rem;">✓ Find out how they got in (and close the door)</li>
-                            <li style="margin-bottom: 0.5rem;">✓ Discover what they took or changed</li>
-                            <li style="margin-bottom: 0.5rem;">✓ Remove any backdoors they left behind</li>
-                            <li style="margin-bottom: 0.5rem;">✓ Help identify who attacked you (when possible)</li>
-                            <li style="margin-bottom: 0.5rem;">✓ Strengthen your defenses to prevent it happening again</li>
-                        </ul>
-                        <p>I understand attackers because I understand their methods.</p>
-			<p>That knowledge now protects your business.</p>
-                        <p class="has-text-grey-darker" style="font-style: italic;">24/7 emergency response available. Confidential consultation.</p>
-                        <a href="mailto:isac@vanderstap.info" class="button is-primary is-medium mt-4" style="background: linear-gradient(135deg, var(--color-accent-green) 0%, #FF3C00B2 100%); box-shadow: 0 0 30px rgba(0, 255, 128, 0.8); font-size: 1.3rem; padding: 1.2rem 3rem;">
-                            <strong>EMERGENCY CONTACT</strong>
-                        </a>
-                    </div>
-
-                    <div class="about-me-section mb-6">
-                        <h2 class="title is-4" id="about">Pepijn van der Stap</h2>
-                        <p>Protocol engineer. System breaker. Infrastructure defender.</p>
-                        
-                        <p>I started young-Artemis Fowl at 9 taught me that genius comes from understanding systems others ignore. Now I read RFCs like sheet music, each standard a composition waiting to be deconstructed. Music and protocols share the same truth: beauty lies in structure, vulnerability in assumptions.</p>
-                        
-                        <p>My journey hasn't been linear. I've walked both sides of the terminal, learned hard lessons, and emerged with clarity about what truly matters: using knowledge to protect, not exploit. The best defense comes from understanding the offense. Every system I secure today carries the weight of that understanding.</p>
-                        
-                        <p>I reverse engineer systems that others consider black boxes. From sifting through squashfs filesystems to parsing undocumented protocols, I find the vulnerabilities that exist between design assumptions and implementation reality. <strong>If necessary, I'll buy the ICS/OT hardware myself and go through the layers until I find what's broken.</strong></p>
-
-                        <div class="quote-section">
-                            <p>"You know the problem with drawing lines in the sand? With a breath of fresh air, they disappear."</p>
-                    </div>
-
-                        <p>At <strong style="color: var(--color-accent-gold); text-shadow: var(--shadow-glow-soft);"><a href="https://neosecurity.nl" target="_blank" rel="noopener noreferrer">Neo Security</a></strong>, I lead offensive security operations with a focus on protocol-level vulnerabilities and critical infrastructure protection. My approach: understand the system better than its creators, find the flaws they missed, and secure what matters most.</p>
-                        
-                        <p>These days, I sleep soundly-7-8 hours every night. Not because the work is easy, but because integrity brings peace. When you're honest about who you are and what you do, paranoia loses its grip.</p>
-                    </div>
-
-                    <div class="projects-section mb-6">
-                        <h2 class="title is-4">Open Source projects</h2>
-                        <p class="has-text-grey-darker" style="margin-bottom: 2rem;">Building tools that push the boundaries of what's possible in security research.</p>
-                        <div class="github-projects">
-                            <div class="github-card">
-                                <h4><svg style="width: 1rem; height: 1rem; vertical-align: middle; margin-right: 0.5rem;" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg> rxtls</h4>
-                                <p class="tech-stack">Go ; Certificate Transparency</p>
-                                <p>High-performance Certificate Transparency log processor. Capable of processing 100,000+ certificates per second, finding needles in the PKI haystack.</p>
-                                <div class="stats">
-                                    <span><svg style="width: 0.85rem; height: 0.85rem;" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg> 42</span>
-                                    <span><svg style="width: 0.85rem; height: 0.85rem;" viewBox="0 0 24 24" fill="currentColor"><path d="M7 5c-1.11 0-2 .89-2 2v8c0 1.11.89 2 2 2h2v2.59c0 .89 1.08 1.34 1.71.71L14.41 17H17c1.11 0 2-.89 2-2V7c0-1.11-.89-2-2-2H7zm0 2h10v8h-3.59L11 17.41V15H7V7z"/></svg> 8</span>
-                                    <span><svg style="width: 0.85rem; height: 0.85rem;" viewBox="0 0 24 24" fill="currentColor"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg> Watch</span>
-                                </div>
-                                <a href="https://github.com/x-stp/rxtls" target="_blank" rel="noopener noreferrer" class="read-more" style="margin-top: 1rem;">View on GitHub</a>
-                            </div>
-                            <div class="github-card">
-                                <h4><svg style="width: 1rem; height: 1rem; vertical-align: middle; margin-right: 0.5rem;" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg> SIGIL7F</h4>
-                                <p class="tech-stack">Go ; Fuzzing ; MIDI</p>
-                                <p>MIDI file parser designed for fuzzing. Because even music protocols have vulnerabilities waiting to be discovered.</p>
-                                <div class="stats">
-                                    <span><svg style="width: 0.85rem; height: 0.85rem;" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg> 18</span>
-                                    <span><svg style="width: 0.85rem; height: 0.85rem;" viewBox="0 0 24 24" fill="currentColor"><path d="M7 5c-1.11 0-2 .89-2 2v8c0 1.11.89 2 2 2h2v2.59c0 .89 1.08 1.34 1.71.71L14.41 17H17c1.11 0 2-.89 2-2V7c0-1.11-.89-2-2-2H7zm0 2h10v8h-3.59L11 17.41V15H7V7z"/></svg> 3</span>
-                                    <span><svg style="width: 0.85rem; height: 0.85rem;" viewBox="0 0 24 24" fill="currentColor"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg> Watch</span>
-                                </div>
-                                <a href="https://github.com/x-stp/SIGIL7F" target="_blank" rel="noopener noreferrer" class="read-more" style="margin-top: 1rem;">View on GitHub</a>
-                            </div>
-                        </div>
-                        <p class="has-text-centered" style="margin-top: 2rem;">
-                            <a href="https://github.com/x-stp" target="_blank" rel="noopener noreferrer" class="has-text-grey-darker">
-                                <svg style="width: 1rem; height: 1rem; vertical-align: middle; margin-right: 0.5rem;" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg> More projects on GitHub
-                            </a>
-                        </p>
-                    </div>
-
-                    <div class="neo-security-section mb-6" style="background: linear-gradient(135deg, var(--color-medium-bg) 0%, rgba(0, 255, 128, 0.05) 100%); padding: 3rem 2rem; border-radius: var(--border-radius-main); border: 1px solid var(--color-accent-green); box-shadow: 0 5px 20px rgba(0, 255, 128, 0.2);">
-                        <h2 class="title is-4" style="color: var(--color-accent-green); text-shadow: 0 0 20px rgba(0, 255, 128, 0.5);">Navigating the Modern Threat Landscape</h2>
-                        <p style="font-size: 1.1rem; margin-bottom: 1.5rem;">At <strong style="color: var(--color-accent-gold);">Neo Security</strong>, we understand that today's cyber threats evolve faster than traditional defenses can adapt. Our team combines deep protocol knowledge with real-world attack experience to provide insights that matter.</p>
-                        
-                        <div class="columns is-multiline" style="margin-top: 2rem;">
-                        <div class="column is-half">
-                                <h4 style="color: var(--color-accent-gold); margin-bottom: 1rem;"><svg style="width: 1.2rem; height: 1.2rem; vertical-align: middle; margin-right: 0.5rem;" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0 3.5c-3.59 0-6.5 2.91-6.5 6.5s2.91 6.5 6.5 6.5 6.5-2.91 6.5-6.5-2.91-6.5-6.5-6.5zm0 2c2.485 0 4.5 2.015 4.5 4.5s-2.015 4.5-4.5 4.5-4.5-2.015-4.5-4.5 2.015-4.5 4.5-4.5z"/></svg> Proactive Defense</h4>
-                                <p>We don't just respond to incidents-we anticipate them. Our offensive security expertise helps organizations understand their vulnerabilities before attackers do.</p>
-                                </div>
-                            <div class="column is-half">
-                                <h4 style="color: var(--color-accent-gold); margin-bottom: 1rem;"><svg style="width: 1.2rem; height: 1.2rem; vertical-align: middle; margin-right: 0.5rem;" viewBox="0 0 24 24" fill="currentColor"><path d="M20 12c0-1.103-.897-2-2-2h-1V7c0-2.757-2.243-5-5-5S7 4.243 7 7v3H6c-1.103 0-2 .897-2 2v8c0 1.103.897 2 2 2h12c1.103 0 2-.897 2-2v-8zM9 7c0-1.654 1.346-3 3-3s3 1.346 3 3v3H9V7zm4 10.723V19h-2v-1.277c-.595-.346-1-.984-1-1.723 0-1.103.897-2 2-2s2 .897 2 2c0 .738-.405 1.376-1 1.723z"/></svg> Deep Technical Analysis</h4>
-                                <p>From firmware to protocols, we dig deeper than surface-level scans. Our team identifies vulnerabilities that automated tools miss.</p>
-                            </div>
-                            <div class="column is-half">
-                                <h4 style="color: var(--color-accent-gold); margin-bottom: 1rem;"><svg style="width: 1.2rem; height: 1.2rem; vertical-align: middle; margin-right: 0.5rem;" viewBox="0 0 24 24" fill="currentColor"><path d="M17 10V6l5 5-5 5v-4h-6v4l-5-5 5-5v4h6zm1 12H6c-1.104 0-2-.896-2-2V4c0-1.104.896-2 2-2h12c1.104 0 2 .896 2 2v5h-2V4H6v16h12v-5h2v5c0 1.104-.896 2-2 2z"/></svg> Critical Infrastructure Focus</h4>
-                                <p>Specialized expertise in ICS/SCADA systems, understanding both IT and OT environments and the unique challenges they present.</p>
-                        </div>
-                        <div class="column is-half">
-                                <h4 style="color: var(--color-accent-gold); margin-bottom: 1rem;"><svg style="width: 1.2rem; height: 1.2rem; vertical-align: middle; margin-right: 0.5rem;" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg> Threat Intelligence</h4>
-                                <p>Real-world insights from active research and incident response, helping you stay ahead of emerging threats.</p>
-                            </div>
-                        </div>
-                        
-                        <p style="margin-top: 2rem; margin-bottom: 2rem;">Whether you need a security assessment, incident response, or strategic guidance on securing your infrastructure, Neo Security brings the expertise and perspective that only comes from understanding both sides of the security equation.</p>
-                        
-                        <div class="has-text-centered">
-                            <a href="https://neosecurity.nl" target="_blank" rel="noopener noreferrer" class="button is-large neo-button" style="background: linear-gradient(135deg, var(--color-accent-green) 0%, var(--color-accent-cyan) 100%); color: var(--color-dark-bg); font-weight: 700; padding: 1.2rem 2.5rem; border-radius: 8px; box-shadow: 0 0 25px rgba(0, 255, 128, 0.5); transition: all 0.3s ease;" onmouseover="this.style.background='linear-gradient(135deg, var(--color-accent-gold) 0%, var(--color-accent-green) 100%)'; this.style.transform='translateY(-3px) scale(1.05)'; this.style.boxShadow='0 5px 35px rgba(255, 215, 0, 0.6)';" onmouseout="this.style.background='linear-gradient(135deg, var(--color-accent-green) 0%, var(--color-accent-cyan) 100%)'; this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='0 0 25px rgba(0, 255, 128, 0.5)';">
-                                <strong>Explore Neo Security services</strong> <svg style="width: 1rem; height: 1rem; vertical-align: middle; margin-left: 0.5rem;" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l10 10-10 10v-6H2v-8h10V2z"/></svg>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="blog-section" id="blog">
-                        <h2 class="title is-4">Articles & Insights</h2>
-                        <p class="has-text-grey-darker" style="margin-bottom: 2rem;">Deep dives into the vulnerabilities that exist between standards and reality. More insights coming soon.</p>
-                                <div class="columns is-multiline">
-                                    <div class="column is-full">
-                                <article class="blog-article" id="pki-trust-paradox">
-                                    <h3>The PKI Trust Paradox</h3>
-                                    <div class="article-meta">
-                                        <span><svg style="width: 0.9rem; height: 0.9rem; vertical-align: middle; margin-right: 0.3rem;" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/></svg> May 10, 2025</span>
-                                        <span><svg style="width: 0.9rem; height: 0.9rem; vertical-align: middle; margin-right: 0.3rem;" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8zm1-8V7h-2v7h6v-2z"/></svg> 2 min read</span>
-                                        <span><svg style="width: 0.9rem; height: 0.9rem; vertical-align: middle; margin-right: 0.3rem;" viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg> <a href="#about">Pepijn van der Stap</a></span>
-                                        <span><svg style="width: 0.9rem; height: 0.9rem; vertical-align: middle; margin-right: 0.3rem;" viewBox="0 0 24 24" fill="currentColor"><path d="M21.41 11.58l-9-9C12.05 2.22 11.55 2 11 2H4c-1.1 0-2 .9-2 2v7c0 .55.22 1.05.59 1.42l9 9c.36.36.86.58 1.41.58.55 0 1.05-.22 1.41-.59l7-7c.37-.36.59-.86.59-1.41 0-.55-.23-1.06-.59-1.42zM5.5 7C4.67 7 4 6.33 4 5.5S4.67 4 5.5 4 7 4.67 7 5.5 6.33 7 5.5 7z"/></svg> PKI, RFC, Security</span>
-                                                </div>
-                                    <p>We've built the internet's security on a foundation of trust that we can't verify. The Certificate Authority system-defined in <a href="https://datatracker.ietf.org/doc/html/rfc5280" target="_blank" rel="noopener noreferrer">RFC 5280</a> and extended by <a href="https://datatracker.ietf.org/doc/html/rfc6962" target="_blank" rel="noopener noreferrer">RFC 6962</a>-is probably flawed by design.</p>
-                                    
-                                    <p><strong>How many CAs does your browser trust?</strong> More importantly, how many people have the power to mint certificates for any domain? The answer: we don't even know. New CAs are added silently. Sub-CAs spawn more sub-CAs. Cross-signing creates webs of trust that no one fully maps.</p>
-                                    
-                                    <p>Consider this: A single compromised CA-anywhere in the world, under any jurisdiction-can issue a valid certificate for your bank. For your government. For your infrastructure. The <a href="https://datatracker.ietf.org/doc/html/rfc5280#section-6" target="_blank" rel="noopener noreferrer">RFC 5280 path validation</a> doesn't care about geography, politics, or intent. It only cares about signatures.</p>
-                                    
-                                    <p><strong>Certificate Transparency</strong> (<a href="https://datatracker.ietf.org/doc/html/rfc6962" target="_blank" rel="noopener noreferrer">RFC 6962</a>) was supposed to fix this. Make all certificates public. Catch misissuance. But it's a band-aid on a broken system. We're logging the symptoms, not curing the disease.</p>
-                                    
-                                    <p>The real issue? <strong>Trust doesn't scale.</strong> Every CA added to the root store is another point of failure. Every intermediate certificate is another key that could be stolen. Every OCSP responder is another service that could lie.</p>
-                                    
-                                    <p>We are the only folks positioned to change this. Not by adding more complexity, but by recognizing that <strong>the PKI model assumes a world that no longer exists</strong>-one where trust was scarce, certificates were expensive, and CAs were few.</p>
-                                    
-                                    <p>The future isn't more CAs. It's systems that assume compromise, verify constantly, and trust nothing. <strong>We need to stop patching RFC 5280 and start building what comes next.</strong></p>
-                                    
-                                    <a href="#pki-trust-paradox" class="read-more">Permalink</a>
-                                </article>
-                                                </div>
-                            <div class="column is-full">
-                                <article class="blog-article" id="critical-infrastructure-reality">
-                                    <h3>The Reality of Critical Infrastructure</h3>
-                                    <div class="article-meta">
-                                        <span><svg style="width: 0.9rem; height: 0.9rem; vertical-align: middle; margin-right: 0.3rem;" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/></svg> May 2, 2025</span>
-                                        <span><svg style="width: 0.9rem; height: 0.9rem; vertical-align: middle; margin-right: 0.3rem;" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8zm1-8V7h-2v7h6v-2z"/></svg> 3 min read</span>
-                                        <span><svg style="width: 0.9rem; height: 0.9rem; vertical-align: middle; margin-right: 0.3rem;" viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg> <a href="#about">Pepijn van der Stap</a></span>
-                                        <span><svg style="width: 0.9rem; height: 0.9rem; vertical-align: middle; margin-right: 0.3rem;" viewBox="0 0 24 24" fill="currentColor"><path d="M21.41 11.58l-9-9C12.05 2.22 11.55 2 11 2H4c-1.1 0-2 .9-2 2v7c0 .55.22 1.05.59 1.42l9 9c.36.36.86.58 1.41.58.55 0 1.05-.22 1.41-.59l7-7c.37-.36.59-.86.59-1.41 0-.55-.23-1.06-.59-1.42zM5.5 7C4.67 7 4 6.33 4 5.5S4.67 4 5.5 4 7 4.67 7 5.5 6.33 7 5.5 7z"/></svg> ICS, SCADA, Protocols</span>
-                                                </div>
-                                    <p>Every week introduces a new botnet, yet another CVE, and rumors of more zero-days. But beneath the headlines, critical infrastructure often runs on systems that lack the protection they deserve.</p>
-                                    
-                                    <p><strong>SCADA edge nodes parsing raw UDP with unchecked pointers.</strong> ICS ports opened during backbone transit, no authentication. Full trust. Fragmented protocols, dialects that aren't standardized. Even Wireshark maintainers feel the strain-it's becoming nearly impossible to maintain parsers with evolving protocols and growing complexity. And let's face it, proprietary, old protocols aren't exactly debugged often.</p>
-                                    
-                                    <p>This is the reality behind the systems that keep our most critical infrastructure running. We need protocol engineers who can identify vulnerabilities others miss. Individuals who can read net RFCs like bytecode; who write parsers that are reliable under load; who challenge assumptions and move past simple wrappers around problems.</p>
-                                    
-                                    <p><strong>Attackers don't seek undefined behavior in system protocols; they exploit the blind spots created by design, standardization, and deliberate neglect.</strong></p>
-                                    
-                                    <p>Metrics? CVEs. Reality: Protocols.</p>
-                                    
-                                    <p>If your job involves reverse-engineering firmware, fuzzing undocumented stacks, or still wrestling with legacy encodings, you are not behind. <strong>You are early, and you are tackling the work that truly moves the needle.</strong></p>
-                                    
-                                    <a href="#critical-infrastructure-reality" class="read-more">Permalink</a>
-                                </article>
-                                                </div>
-                        </div>
-                        <div class="has-text-centered" style="margin-top: 2rem;">
-                            <p class="has-text-grey-darker">More articles coming soon. Subscribe to <a href="#blog">RSS</a> or follow on <a href="https://github.com/x-stp" target="_blank" rel="noopener noreferrer">GitHub</a> for updates.</p>
-                        </div>
-                    </div>
-
-                    <div class="contributions-section mb-6">
-                        <h2 class="title is-4">Recognition & Contributions</h2>
-                        <p class="has-text-grey-darker" style="margin-bottom: 2rem;">Security research that makes a difference.</p>
-                        <div class="contributions-list">
-                            <details>
-                                            <summary>
-                                    <svg class="icon-svg" style="margin-right: 0.8rem; color: var(--color-accent-green);" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
-                                                <div class="summary-content">
-                                        <span class="org-name">Microsoft Security Response Center</span>
-                                        <span class="contribution-subtitle">Critical vulnerability research</span>
-                                                </div>
-                                            </summary>
-                                <div class="details-content">
-                                    <p>Identified and responsibly disclosed vulnerabilities in Microsoft products, contributing to the security of millions of users worldwide.</p>
-                                </div>
-                                        </details>
-                            <details>
-                                            <summary>
-                                    <svg class="icon-svg" style="margin-right: 0.8rem; color: var(--color-accent-green);" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.5 17.311l-4.5-2.689-4.5 2.689 1.188-5.141-3.688-3.237 5.086-.453 1.914-4.48 1.914 4.48 5.086.453-3.688 3.237 1.188 5.141z"/></svg>
-                                                <div class="summary-content">
-                                        <span class="org-name">CERT-EU</span>
-                                        <span class="contribution-subtitle">Hall of Fame Recognition</span>
-                                                </div>
-                                            </summary>
-                                <div class="details-content">
-                                    <p>Recognized in the <a href="https://cert.europa.eu/hall-of-fame" rel="nofollow noopener noreferrer">CERT-EU Hall of Fame</a> for responsible disclosure of security vulnerabilities affecting European Union infrastructure.</p>
-                                </div>
-                                        </details>
-                            <details>
-                                            <summary>
-                                    <svg class="icon-svg" style="margin-right: 0.8rem; color: var(--color-accent-green);" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M19 5h-2V3H7v2H5c-1.1 0-2 .9-2 2v1c0 2.55 1.92 4.63 4.39 4.94A5.01 5.01 0 0 0 11 15.9V19H7v2h10v-2h-4v-3.1a5.01 5.01 0 0 0 3.61-2.96C19.08 12.63 21 10.55 21 8V7c0-1.1-.9-2-2-2zM5 8V7h2v3.82C5.84 10.4 5 9.3 5 8zm14 0c0 1.3-.84 2.4-2 2.82V7h2v1z"/></svg>
-                                                <div class="summary-content">
-                                        <span class="org-name">IBD (Informatiebeveiligingsdienst)</span>
-                                        <span class="contribution-subtitle">Multiple Hall of Fame entries</span>
-                                                </div>
-                                            </summary>
-                                <div class="details-content">
-                                    <p>Recognized for responsible disclosure contributions:</p>
-                                    <ul style="margin-top: 0.5rem;">
-                                        <li><a href="https://www.informatiebeveiligingsdienst.nl/responsible-disclosure/2025-coordinated-vulnerability-disclosure-hall-of-fame/" rel="nofollow noopener noreferrer">IBD Hall of Fame 2025</a></li>
-                                        <li><a href="https://www.informatiebeveiligingsdienst.nl/responsible-disclosure/2021-responsible-disclosure-hall-of-fame/" rel="nofollow noopener noreferrer">IBD Hall of Fame 2021</a></li>
-                                    </ul>
-                                </div>
-                                        </details>
-                            <details>
-                                            <summary>
-                                    <svg class="icon-svg" style="margin-right: 0.8rem; color: var(--color-accent-green);" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.94-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-                                                <div class="summary-content">
-                                        <span class="org-name">Dutch Organizations</span>
-                                        <span class="contribution-subtitle">National infrastructure security</span>
-                                                </div>
-                                            </summary>
-                                <div class="details-content">
-                                    <p>Contributing to the security of Dutch digital infrastructure:</p>
-                                    <ul style="margin-top: 0.5rem;">
-                                        <li><a href="https://freedom.nl/coordinated-vulnerability-disclosure/hackers-hall-of-fame" rel="nofollow noopener noreferrer">Freedom.nl Hall of Fame</a></li>
-                                        <li><a href="https://www.sheerenloo.nl/over-the-website/coordinated-vulnerability-disclosure#hall-of-fame" rel="nofollow noopener noreferrer">Sheerenloo.nl Hall of Fame</a></li>
-                                    </ul>
-                                </div>
-                                        </details>
-                            <details>
-                                            <summary>
-                                    <svg class="icon-svg" style="margin-right: 0.8rem; color: var(--color-accent-green);" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
-                                                <div class="summary-content">
-                                        <span class="org-name">Private Sector Clients</span>
-                                        <span class="contribution-subtitle">Confidential security assessments</span>
-                                                </div>
-                                            </summary>
-                                <div class="details-content">
-                                    <p>Conducted numerous security assessments for Fortune 500 companies, identifying critical vulnerabilities before malicious actors could exploit them.</p>
-                                </div>
-                                        </details>
-                    </div>
-
-                        <!-- SEO Backlinks Section -->
-                        <div style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--color-border);">
-                            <p class="has-text-grey-darker" style="font-size: 0.9rem; margin-bottom: 1rem;">Find me on:</p>
-                            <div style="display: flex; flex-wrap: wrap; gap: 1rem; font-size: 0.9rem;">
-                                <a href="https://www.linkedin.com/in/pepijn-van-der-stap-3637a2175" rel="nofollow noopener noreferrer">
-                                    <svg class="icon-svg" style="width: 1rem; height: 1rem; vertical-align: middle; margin-right: 0.3rem;" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg> LinkedIn
-                                </a>
-                                <a href="https://keybase.io/xstp" rel="nofollow noopener noreferrer">
-                                    <svg class="icon-svg" style="width: 1rem; height: 1rem; vertical-align: middle; margin-right: 0.3rem;" viewBox="0 0 24 24" fill="currentColor"><path d="M10.446 21.371c0 .528-.428.953-.954.953-.525 0-.954-.425-.954-.953 0-.526.428-.954.953-.954.524 0 .951.431.951.955m5.922-.001c0 .528-.428.953-.955.953-.526 0-.952-.425-.952-.953 0-.526.423-.954.949-.954s.954.431.954.955"/><path d="M20.904 12.213l-.156-.204c-.046-.06-.096-.116-.143-.175-.045-.061-.094-.113-.141-.169-.104-.12-.209-.239-.319-.359l-.076-.08-.091-.099-.135-.131c-.015-.018-.032-.034-.05-.053-1.16-1.139-2.505-1.986-3.955-2.504l-.23-.078c.012-.027.024-.055.035-.083.41-1.064.367-2.223-.12-3.255-.491-1.035-1.356-1.8-2.438-2.16-.656-.216-1.23-.319-1.711-.305-.033-.105-.1-.577.496-1.848L10.663 0l-.287.399c-.33.455-.648.895-.945 1.328-.328-.345-.766-.552-1.245-.58L6.79 1.061h-.012c-.033-.003-.07-.003-.104-.003-.99 0-1.81.771-1.87 1.755l-.088 1.402v.003c-.061 1.029.727 1.915 1.755 1.979l1.002.061c-.065.84.073 1.62.405 2.306-1.346.562-2.586 1.401-3.66 2.484C.913 14.391.913 18.051.913 20.994v1.775l1.305-1.387c.266.93.652 1.807 1.145 2.615H5.06c-.833-1.114-1.419-2.426-1.68-3.848l1.913-2.03-.985 3.091 1.74-1.268c3.075-2.234 6.744-2.75 10.91-1.529 1.805.532 3.56.039 4.473-1.257l.104-.165c.091.498.141.998.141 1.496 0 1.563-.255 3.687-1.38 5.512h1.611c.776-1.563 1.181-3.432 1.181-5.512-.001-2.199-.786-4.421-2.184-6.274zM8.894 6.191c.123-1.002.578-1.949 1.23-2.97.025.05.054.097.084.144.264.398.713.625 1.199.605.217-.008.605.025 1.233.232.714.236 1.286.744 1.608 1.425s.349 1.442.079 2.149c-.173.445-.454.82-.806 1.109l-.408-.502-.002-.003c-.279-.341-.694-.535-1.134-.535-.335 0-.664.117-.925.33-.334.27-.514.66-.534 1.058-1.2-.541-1.8-1.643-1.628-3.041l.004-.001zm4.304 5.11l-.519.425c-.046.036-.095.053-.146.053-.066 0-.133-.03-.177-.085l-.111-.135c-.083-.1-.067-.25.034-.334l.51-.42-1.055-1.299c-.109-.133-.091-.33.044-.436.058-.048.126-.072.194-.072.091 0 .181.038.24.113l2.963 3.645c.109.135.09.33-.042.436-.039.029-.082.053-.126.063-.023.006-.045.009-.07.009-.09 0-.178-.04-.24-.113l-.295-.365-1.045.854c-.046.037-.1.055-.154.055-.068 0-.139-.03-.186-.09l-.477-.579c-.082-.102-.068-.252.035-.336l1.051-.857-.426-.533-.002.001zM7.753 4.866l-1.196-.075c-.255-.015-.45-.235-.435-.488l.09-1.401c.014-.245.216-.436.461-.436h.024l1.401.091c.123.006.236.06.317.152.083.094.123.21.116.336l-.007.101c-.32.567-.585 1.134-.773 1.72h.002zm12.524 11.481c-.565.805-1.687 1.081-2.924.718-3.886-1.141-7.396-.903-10.468.701l1.636-5.123-5.291 5.609c.099-3.762 2.453-6.966 5.758-8.311.471.373 1.034.66 1.673.841.16.044.322.074.48.102-.183.458-.119.997.21 1.407l.075.09c-.172.45-.105.975.221 1.374l.475.582c.266.325.659.513 1.079.513.321 0 .635-.111.886-.314l.285-.232c.174.074.367.113.566.113.113 0 .222-.01.33-.035.218-.05.424-.15.598-.291.623-.51.72-1.435.209-2.06l-1.67-2.056c.145-.117.281-.244.408-.381.135.037.271.078.4.12.266.097.533.198.795.315 1.005.445 1.954 1.1 2.771 1.897.029.03.059.055.085.083l.17.175c.038.039.076.079.111.12.079.085.16.175.239.267l.126.15c.045.053.086.104.13.16l.114.15c.04.051.079.102.117.154.838 1.149.987 2.329.404 3.157v.005z"/><path d="M7.719 4.115l-.835-.051.053-.835.834.051-.052.835z"/></svg> Keybase
-                                </a>
-                                <a href="https://github.com/x-stp" rel="nofollow noopener noreferrer">
-                                    <svg class="icon-svg" style="width: 1rem; height: 1rem; vertical-align: middle; margin-right: 0.3rem;" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg> GitHub
-                                </a>
-                                <a href="https://bugcrowd.com/xstplanet" rel="nofollow noopener noreferrer">
-                                    <svg class="icon-svg" style="width: 1rem; height: 1rem; vertical-align: middle; margin-right: 0.3rem;" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-2 16l-4-4 1.41-1.41 2.59 2.58 6.59-6.59 1.41 1.42-8 8z"/></svg> Bugcrowd
-                                </a>
-                                <a href="https://hackerone.com/stplanet" rel="nofollow noopener noreferrer">
-                                    <svg class="icon-svg" style="width: 1rem; height: 1rem; vertical-align: middle; margin-right: 0.3rem;" viewBox="0 0 24 24" fill="currentColor"><path d="M23 12l-2.44-2.78.34-3.68-3.61-.82-1.89-3.18L12 3 8.6 1.54 6.71 4.72l-3.61.81.34 3.68L1 12l2.44 2.78-.34 3.69 3.61.82 1.89 3.18L12 21l3.4 1.46 1.89-3.18 3.61-.82-.34-3.68L23 12zm-10 5h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg> HackerOne
-                                </a>
-                                    </div>
-                                </div>
-                    </div>
-
+    </nav>
+    <header class="bg-near-black py-24 px-4">
+        <div id="terminal-container" class="container mx-auto max-w-4xl font-mono text-left">
+             </div>
+    </header>
+    <main>
+        <section id="genesis" class="py-24 px-4 bg-bg">
+            <div class="container mx-auto max-w-4xl text-center">
+                <h2 class="font-display text-4xl font-bold text-white mb-4 phoenix-title inline-block">My Story</h2>
+                <p class="text-muted text-lg mb-8">Curiosity has always been my compass.</p>
+                <div class="text-left text-lg space-y-6 max-w-3xl mx-auto border-t-2 border-b-2 border-accent-gold/20 py-8 dossier-content">
+                    <p>My journey hasn't been a straight line. I’ve seen security from both sides of the terminal, an experience that taught me hard lessons but ultimately gave me clarity: knowledge is for building and protecting, not breaking. My past shaped my conviction that to build the strongest defense, you must deeply understand the offense.</p>
+                    <p>It started with a spark of curiosity—the kind you get from reading books like Artemis Fowl at age nine, realizing that the world is full of complex systems waiting to be understood. This led me to a love for the elegant simplicity of Unix and the directness of languages like <strong class="text-accent-cyan">Go</strong> and <strong class="text-accent-cyan">C</strong>. I read RFCs and compliance documents with the same focus, seeing them not as dry rules, but as blueprints for creating order and security.</p>
+                    <p>Today, I apply that same deep-dive mentality to my work. Whether I’m reverse engineering firmware, analyzing a proprietary protocol, or mapping security controls to frameworks like <strong class="text-accent-gold">NIST CSF, OWASP ASVS, and ISO 27001</strong>, my goal is the same: to understand a system so completely that I can help make it resilient, secure, and trustworthy.</p>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <footer class="section hero is-dark has-text-centered" role="contentInfo">
-        <div class="container is-narrow">
-            <div class="copyright has-margin-bottom-5">
-                <p>&copy; Pepijn van der Stap - 2025 // All rights reserved.</p>
-                <p class="has-text-grey-darker" style="font-size: 0.8rem; margin-top: 0.5rem;">
-                    Compliance: <a href="https://www.iso.org/standard/75281.html" target="_blank" rel="noopener noreferrer">ISO 27002</a> • 
-                    <a href="https://www.aicpa.org/resources/landing/system-and-organization-controls-soc-suite-of-services" target="_blank" rel="noopener noreferrer">SOC 2</a> • 
-                    <a href="https://www.nist.gov/cyberframework" target="_blank" rel="noopener noreferrer">NIST CSF</a> • 
-                    <a href="https://owasp.org/www-project-application-security-verification-standard/" target="_blank" rel="noopener noreferrer">OWASP ASVS</a> • 
-                    <a href="https://owasp.org/www-project-ai-security-verification-standard/" target="_blank" rel="noopener noreferrer">OWASP AISVS</a> (upcoming)
-                </p>
+        </section>
+        <section id="capabilities" class="py-20 px-4 bg-near-black">
+            <div class="container mx-auto max-w-6xl">
+                <div class="text-center mb-16">
+                    <h2 class="font-display text-4xl font-bold text-white">Capabilities</h2>
+                    <p class="text-muted">My core areas of focus.</p>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8" id="armory-grid">
+                    </div>
             </div>
-            <div id="scroll-top">
-                <a class="scroll" title="Scroll Back To Top" href="#top">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l8 9h-6v15h-4v-15h-6z"/></svg>
-                </a>
+        </section>
+        <section id="dispatch" class="py-20 px-4 bg-bg">
+             <div class="container mx-auto max-w-5xl text-center">
+                <h2 class="font-display text-4xl font-bold text-white mb-4">Field Dispatch: Articles & Projects</h2>
+                <p class="text-muted text-lg mb-8">Intelligence and tooling from the front lines. A preview of a full blog to come.</p>
+                <div id="dossiers-container" class="space-y-6 text-left">
+                   </div>
+             </div>
+        </section>
+        <section id="contribution" class="py-20 px-4 bg-near-black">
+            <div class="container mx-auto max-w-5xl text-center">
+                <h2 class="font-display text-4xl font-bold text-white mb-4">A Record of Contribution</h2>
+                <p class="text-muted text-lg mb-12">I believe in using my skills to strengthen our collective digital world. To that end, I have submitted over 100,000 responsible disclosure reports throughout my career to help organizations secure their systems.</p>
+                <div class="flex flex-wrap justify-center items-center gap-x-12 sm:gap-x-16 gap-y-8 mb-12" id="wall-of-fame">
+                    </div>
+                 <div class="text-left max-w-3xl mx-auto bg-black p-6 rounded-lg border border-accent-gold/20">
+                    <h3 class="font-bold text-lg text-accent-gold mb-4">Select Acknowledgements:</h3>
+                    <div id="commendations-list" class="space-y-2">
+                        </div>
+                </div>
             </div>
+        </section>
+    </main>
+    <footer id="contact" class="bg-black text-center py-16 px-4">
+        <div class="container mx-auto">
+            <h2 class="font-display text-3xl font-bold text-white mb-4">Open Secure Channel</h2>
+            <p class="text-lg text-muted mb-6">For collaborations, inquiries, or to engage my services.</p>
+            <a href="mailto:hello@vanderstap.info" class="text-accent-cyan text-2xl my-2 inline-block hover:underline font-mono">hello@vanderstap.info</a>
+            <div class="flex justify-center gap-6 mt-8" id="social-links-container">
+                </div>
+            <div class="mt-12 border-t border-gray-800 pt-8">
+                <p class="text-muted text-sm mb-2">Compliance & Protocols</p>
+                <div class="text-xs text-muted space-x-2 md:space-x-4">
+                     <a href="https://www.iso.org/standard/75281.html" target="_blank" rel="noopener noreferrer" class="hover:text-white">ISO 27001</a> •
+                     <a href="https://www.aicpa.org/resources/landing/system-and-organization-controls-soc-suite-of-services" target="_blank" rel="noopener noreferrer" class="hover:text-white">SOC 2</a> •
+                     <a href="https://www.nist.gov/cyberframework" target="_blank" rel="noopener noreferrer" class="hover:text-white">NIST CSF</a> •
+                     <a href="https://owasp.org/www-project-application-security-verification-standard/" target="_blank" rel="noopener noreferrer" class="hover:text-white">OWASP ASVS</a>
+                </div>
+            </div>
+            <p class="text-muted text-sm mt-8">&copy; 2025 Pepijn van der Stap. All Rights Reserved.</p>
         </div>
     </footer>
-    <footer class="line has-background-primary"></footer>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // --- Data ---
+    const capabilities = [
+        { title: 'Offensive Security Diagnostics', desc: 'Identifying exploitable design flaws and vulnerabilities before adversaries do, providing a clear path to remediation.', icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 mb-4 text-accent-red" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>`},
+        { title: 'Resilient Defense Architecture', desc: 'Using offensive intelligence and compliance knowledge (NIST, ISO) to architect battle-hardened, defensible networks.', icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 mb-4 text-accent-green" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>`},
+        { title: 'Firmware & Protocol Forensics', desc: 'Deconstructing embedded systems and network protocols to uncover and help fix deep, hidden vulnerabilities.', icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 mb-4 text-accent-cyan" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>`},
+        { title: 'Critical Infrastructure Protection', desc: 'Partnering with organizations to help secure the operational technology (ICS/OT) that underpins our society.', icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 mb-4 text-accent-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" /></svg>`}
+    ];
 
-    <script>
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                    behavior: 'smooth'
-                });
-                }
-            });
-        });
+    const dossiers = [
+        { type: 'article', date: 'May 2025', author: 'By Pepijn van der Stap', title: 'The PKI Trust Paradox', content: `We've built the internet's security on a foundation of trust we can't truly verify. The Certificate Authority system—defined in RFC 5280 and extended by RFC 6962—is arguably flawed by design. A single compromised CA, anywhere in the world, can issue a "valid" certificate for any entity. Certificate Transparency (RFC 6962) was a reactive patch on a fractured model. The future isn't more CAs; it's systems that assume compromise, verify relentlessly, and trust nothing. It's time to stop patching RFC 5280 and start building its replacement.` },
+        { type: 'article', date: 'May 2025', author: 'By Pepijn van der Stap', title: 'The Reality of Critical Infrastructure', content: `SCADA edge nodes parsing raw UDP with unchecked pointers. ICS ports opened during backbone transit with no authentication. Full trust. This is the reality of the systems running our most critical infrastructure. Attackers don't just seek undefined behavior; they exploit the blind spots created by flawed design, outdated standards, and deliberate neglect. Metrics like CVE counts are superficial. The truth is in the protocols. If your work involves reverse-engineering firmware or fuzzing undocumented stacks, you are tackling the work that truly moves the needle.` },
+        { type: 'project', date: 'April 2025', author: 'By Pepijn van der Stap', title: 'nuclei-parse-enrich', tech: 'Go / Automation / Recon', content: 'Enriches Nuclei JSON output with ripeSTAT/WHOIS contact information, streamlining the initial phases of engagement and responsible disclosure.', stats: {stars: '??', forks: '??'}, link: 'https://github.com/x-stp/nuclei-parse-enrich' },
+        { type: 'project', date: 'April 2025', author: 'By Pepijn van der Stap', title: 'deduplicatz', tech: 'C / Performance / Data Processing', content: 'Remove duplicates smarter, not harder. Uses xxhash to process massive datasets like Rapid7 FDNS or ZGRAB2 output with minimal memory overhead. Torch terabytes of data clean, fast.', stats: {stars: 6, forks: 0}, link: 'https://github.com/x-stp/deduplicatz' },
+        { type: 'project', date: 'March 2025', author: 'By Pepijn van der Stap', title: 'rxtls', tech: 'Go / Certificate Transparency', content: 'High-performance Certificate Transparency log processor. Capable of processing 100,000+ certificates per second, finding needles in the global PKI haystack.', stats: {stars: 42, forks: 8}, link: 'https://github.com/x-stp/rxtls' },
+        { type: 'project', date: 'March 2025', author: 'By Pepijn van der Stap', title: 'SIGIL7F', tech: 'Go / Fuzzing / MIDI', content: 'A MIDI file parser engineered specifically for fuzzing. Because even music protocols have vulnerabilities waiting to be discovered.', stats: {stars: 18, forks: 3}, link: 'https://github.com/x-stp/SIGIL7F' }
+    ];
 
-        document.addEventListener('DOMContentLoaded', () => {
-            const scrollTopButton = document.getElementById('scroll-top');
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 300) { 
-                    scrollTopButton.style.display = 'block';
+    const recognitions = [
+        { name: 'Microsoft', title: 'Microsoft Security Response Center', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Microsoft_logo.svg/1200px-Microsoft_logo.svg.png', class: 'h-10 sm:h-12' },
+        { name: 'CERT-EU', title: 'CERT-EU', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Flag_of_Europe.svg/1200px-Flag_of_Europe.svg.png', class: 'h-10 smh-12' },
+        { name: 'Dutch Government', title: 'VNG/IBD', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Flag_of_the_Netherlands.svg/1200px-Flag_of_the_Netherlands.svg.png', class: 'h-10 sm:h-12' },
+        { name: 'HackerOne', title: 'HackerOne', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/HackerOne_logo.svg/1200px-HackerOne_logo.svg.png', class: 'h-6 sm:h-8' }
+    ];
+
+    const commendations = [
+        { title: 'Microsoft Security Response Center', subtitle: 'For critical vulnerability research & disclosures.' },
+        { title: 'CERT-EU', subtitle: 'Acknowledgement for contributions to European infrastructure security.', link: 'https://cert.europa.eu/hall-of-fame' },
+        { title: 'Association of Netherlands Municipalities (IBD)', subtitle: 'Multiple acknowledgements for securing national digital services.', link: 'https://www.informatiebeveiligingsdienst.nl/responsible-disclosure' },
+        { title: "s-Heeren Loo", subtitle: "For helping to secure systems in the Dutch healthcare sector.", link: 'https://www.sheerenloo.nl/over-de-website/coordinated-vulnerability-disclosure#hall-of-fame' },
+        { title: 'Freedom Internet', subtitle: 'For contributions to national infrastructure security.', link: 'https://freedom.nl/coordinated-vulnerability-disclosure/hackers-hall-of-fame' }
+    ];
+
+    const socialLinks = [
+        { label: 'GitHub', href: 'https://github.com/x-stp', icon: `<svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>` },
+        { label: 'LinkedIn', href: 'https://www.linkedin.com/in/pepijn-van-der-stap-3637a2175', icon: `<svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>` },
+        { label: 'Keybase', href: 'https://keybase.io/xstp', icon: `<svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M10.446 21.371c0 .528-.428.953-.954.953-.525 0-.954-.425-.954-.953 0-.526.428-.954.953-.954.524 0 .951.431.951.955m5.922-.001c0 .528-.428.953-.955.953-.526 0-.952-.425-.952-.953 0-.526.423-.954.949-.954s.954.431.954.955"/><path d="M20.904 12.213l-.156-.204c-.046-.06-.096-.116-.143-.175-.045-.061-.094-.113-.141-.169-.104-.12-.209-.239-.319-.359l-.076-.08-.091-.099-.135-.131c-.015-.018-.032-.034-.05-.053-1.16-1.139-2.505-1.986-3.955-2.504l-.23-.078c.012-.027.024-.055.035-.083.41-1.064.367-2.223-.12-3.255-.491-1.035-1.356-1.8-2.438-2.16-.656-.216-1.23-.319-1.711-.305-.033-.105-.1-.577.496-1.848L10.663 0l-.287.399c-.33.455-.648.895-.945 1.328-.328-.345-.766-.552-1.245-.58L6.79 1.061h-.012c-.033-.003-.07-.003-.104-.003-.99 0-1.81.771-1.87 1.755l-.088 1.402v.003c-.061 1.029.727 1.915 1.755 1.979l1.002.061c-.065.84.073 1.62.405 2.306-1.346.562-2.586 1.401-3.66 2.484C.913 14.391.913 18.051.913 20.994v1.775l1.305-1.387c.266.93.652 1.807 1.145 2.615H5.06c-.833-1.114-1.419-2.426-1.68-3.848l1.913-2.03-.985 3.091 1.74-1.268c3.075-2.234 6.744-2.75 10.91-1.529 1.805.532 3.56.039 4.473-1.257l.104-.165c.091.498.141.998.141 1.496 0 1.563-.255 3.687-1.38 5.512h1.611c.776-1.563 1.181-3.432 1.181-5.512-.001-2.199-.786-4.421-2.184-6.274zM8.894 6.191c.123-1.002.578-1.949 1.23-2.97.025.05.054.097.084.144.264.398.713.625 1.199.605.217-.008.605.025 1.233.232.714.236 1.286.744 1.608 1.425s.349 1.442.079 2.149c-.173.445-.454.82-.806 1.109l-.408-.502-.002-.003c-.279-.341-.694-.535-1.134-.535-.335 0-.664.117-.925.33-.334.27-.514.66-.534 1.058-1.2-.541-1.8-1.643-1.628-3.041l.004-.001zm4.304 5.11l-.519.425c-.046.036-.095.053-.146.053-.066 0-.133-.03-.177-.085l-.111-.135c-.083-.1-.067-.25.034-.334l.51-.42-1.055-1.299c-.109-.133-.091-.33.044-.436.058-.048.126-.072.194-.072.091 0 .181.038.24.113l2.963 3.645c.109.135.09.33-.042.436-.039.029-.082.053-.126.063-.023.006-.045.009-.07.009-.09 0-.178-.04-.24-.113l-.295-.365-1.045.854c-.046.037-.1.055-.154.055-.068 0-.139-.03-.186-.09l-.477-.579c-.082-.102-.068-.252.035-.336l1.051-.857-.426-.533-.002.001zM7.753 4.866l-1.196-.075c-.255-.015-.45-.235-.435-.488l.09-1.401c.014-.245.216-.436.461-.436h.024l1.401.091c.123.006.236.06.317.152.083.094.123.21.116.336l-.007.101c-.32.567-.585 1.134-.773 1.72h.002zm12.524 11.481c-.565.805-1.687 1.081-2.924.718-3.886-1.141-7.396-.903-10.468.701l1.636-5.123-5.291 5.609c.099-3.762 2.453-6.966 5.758-8.311.471.373 1.034.66 1.673.841.16.044.322.074.48.102-.183.458-.119.997.21 1.407l.075.09c-.172.45-.105.975.221 1.374l.475.582c.266.325.659.513 1.079.513.321 0 .635-.111.886-.314l.285-.232c.174.074.367.113.566.113.113 0 .222-.01.33-.035.218-.05.424-.15.598-.291.623-.51.72-1.435.209-2.06l-1.67-2.056c.145-.117.281-.244.408-.381.135.037.271.078.4.12.266.097.533.198.795.315 1.005.445 1.954 1.1 2.771 1.897.029.03.059.055.085.083l.17.175c.038.039.076.079.111.12.079.085.16.175.239.267l.126.15c.045.053.086.104.13.16l.114.15c.04.051.079.102.117.154.838 1.149.987 2.329.404 3.157v.005z"/><path d="M7.719 4.115l-.835-.051.053-.835.834.051-.052.835z"/></svg>` }
+    ];
+
+    // --- Populate DOM ---
+    function populateArmory() {
+        const container = document.getElementById('armory-grid');
+        if (!container) return;
+        container.innerHTML = capabilities.map(c => {
+            let borderColor = 'border-accent-gold';
+            if (c.title.includes('Offensive')) borderColor = 'border-accent-red';
+            if (c.title.includes('Defense')) borderColor = 'border-accent-green';
+            if (c.title.includes('Forensics')) borderColor = 'border-accent-cyan';
+            return `
+            <div class="bg-bg-light p-6 rounded-lg border-l-4 ${borderColor} flex flex-col armory-card">
+                <div>${c.icon}</div>
+                <h3 class="font-bold text-xl text-white mb-2">${c.title}</h3>
+                <p class="text-muted flex-grow">${c.desc}</p>
+            </div>
+        `}).join('');
+    }
+
+    function populateDossiers() {
+        const container = document.getElementById('dossiers-container');
+        if (!container) return;
+        container.innerHTML = dossiers.map(d => {
+            const cardColor = d.type === 'project' ? 'border-accent-green' : 'border-accent-gold';
+            const titleColor = d.type === 'project' ? 'text-accent-green' : 'text-accent-gold';
+
+            const byline = `<p class="text-xs text-muted">${d.author} • ${d.date}</p>`;
+
+            if (d.type === 'project') {
+                return `
+                <div class="bg-light rounded-lg overflow-hidden p-6 my-4 border-l-4 ${cardColor} transition-colors hover:bg-near-black">
+                     <div class="flex justify-between items-baseline mb-2">
+                        <h3 class="font-bold text-xl ${titleColor}">${d.title}</h3>
+                        <p class="text-sm text-accent-cyan font-mono">${d.tech}</p>
+                     </div>
+                     ${byline}
+                     <p class="text-muted my-4">${d.content}</p>
+                     <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-4 text-muted text-sm">
+                            <span>⭐ ${d.stats.stars}</span>
+                            <span><svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 inline-block -mt-1" viewBox="0 0 16 16"><path fill="currentColor" fill-rule="evenodd" d="M5 3.25a.75.75 0 1 1-1.5 0a.75.75 0 0 1 1.5 0m0 2.122a2.25 2.25 0 1 0-1.5 0v.878A2.25 2.25 0 0 0 5.75 8.5h1.5v2.128a2.251 2.251 0 1 0 1.5 0V8.5h1.5a2.25 2.25 0 0 0 2.25-2.25v-.878a2.25 2.25 0 1 0-1.5 0v.878a.75.75 0 0 1-.75.75h-4.5A.75.75 0 0 1 5 6.25zM11 12.75a.75.75 0 1 1 1.5 0a.75.75 0 0 1-1.5 0m-6.5-4a.75.75 0 1 0 0-1.5a.75.75 0 0 0 0 1.5"/></svg> ${d.stats.forks}</span>
+                        </div>
+                        <a href="${d.link}" target="_blank" rel="noopener noreferrer" class="text-accent-green hover:underline">
+                            View Project &rarr;
+                        </a>
+                     </div>
+                </div>`;
+            } else { // article
+                return `
+                <div class="bg-light rounded-lg overflow-hidden p-6 my-4 border-l-4 ${cardColor} transition-colors hover:bg-near-black dossier-content">
+                    <h3 class="font-bold text-xl ${titleColor} mb-2">${d.title}</h3>
+                    ${byline}
+                    <p class="text-muted mt-4">${d.content}</p>
+                </div>`;
+            }
+        }).join('');
+    }
+
+    function populateRecognition() {
+        const logoContainer = document.getElementById('wall-of-fame');
+        if (logoContainer) {
+            logoContainer.innerHTML = recognitions.map(r => `
+                <img src="${r.logo}" alt="${r.name}" title="${r.title}" class="${r.class} filter grayscale hover:grayscale-0 transition-all duration-300">
+            `).join('');
+        }
+
+        const commendationsContainer = document.getElementById('commendations-list');
+        if (commendationsContainer) {
+            commendationsContainer.innerHTML = commendations.map(c => `
+                 <div class="contribution-card rounded-lg overflow-hidden py-2">
+                    <p class="font-bold text-main">${c.title}</p>
+                    <div class="pl-4">
+                        <p class="text-muted">${c.subtitle}</p>
+                        ${c.link ? `<a href="${c.link}" rel="nofollow noopener noreferrer" target="_blank" class="text-accent-green text-sm hover:underline">View Acknowledgement &rarr;</a>` : ''}
+                    </div>
+                </div>
+            `).join('');
+        }
+    }
+
+    function populateSocials() {
+        const container = document.getElementById('social-links-container');
+        if (!container) return;
+        container.innerHTML = socialLinks.map(s => `<a href="${s.href}" target="_blank" rel="noopener noreferrer" aria-label="${s.label}" class="text-muted hover:text-white transition-colors">${s.icon}</a>`).join('');
+    }
+
+    // --- Animations and Effects ---
+    function terminalAnimation() {
+        const container = document.getElementById('terminal-container');
+        if (!container) return;
+        const lines = [
+            { text: 'Initializing subsystems... [OK]', delay: 500, speed: 20, class: 'text-muted' },
+            { text: 'Loading profile: pepijn.vanderstap/init', delay: 300, speed: 30, class: 'text-accent-green' },
+            { text: 'Pepijn van der Stap', delay: 100, speed: 50, class: 'font-display text-5xl md:text-7xl font-bold text-white glow-green mb-4', isH1: true },
+            { text: 'Security Research & Protocol Engineering', delay: 100, speed: 40, class: 'text-xl md:text-2xl text-accent-cyan', hasPrompt: true }
+        ];
+        let lineIndex = 0;
+
+        function typeLine() {
+            if (lineIndex >= lines.length) return;
+            const line = lines[lineIndex];
+            const el = document.createElement(line.isH1 ? 'h1' : 'div');
+            el.className = line.class;
+            container.appendChild(el);
+            let contentEl = el;
+
+            if (line.hasPrompt) {
+                const prompt = document.createElement('span');
+                prompt.textContent = '> ';
+                el.appendChild(prompt);
+                const textSpan = document.createElement('span');
+                textSpan.id = 'terminal-header-text';
+                el.appendChild(textSpan);
+                contentEl = textSpan;
+            }
+
+            let charIndex = 0;
+            function typeChar() {
+                if (charIndex < line.text.length) {
+                    contentEl.textContent += line.text.charAt(charIndex);
+                    charIndex++;
+                    setTimeout(typeChar, line.speed);
                 } else {
-                    scrollTopButton.style.display = 'none';
+                    lineIndex++;
+                    setTimeout(typeLine, line.delay);
                 }
-            });
+            }
+            typeChar();
+        }
+        typeLine();
+    }
+
+    function initStickyNav() {
+        const navbar = document.getElementById('navbar');
+        if (!navbar) return;
+        window.addEventListener('scroll', () => {
+            navbar.classList.toggle('shadow-lg', window.scrollY > 10);
+            navbar.classList.toggle('shadow-black/20', window.scrollY > 10);
         });
-    </script>
+    }
+
+    // --- Run everything ---
+    terminalAnimation();
+    populateArmory();
+    populateDossiers();
+    populateRecognition();
+    populateSocials();
+    initStickyNav();
+});
+</script>
 </body>
 </html>
-
