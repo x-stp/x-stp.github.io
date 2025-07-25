@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog | Pepijn van der Stap - Security Research & Insights</title>
+    <meta name="description" content="Insights on security research, ethical hacking, bug bounties, and offensive security. Learn from real-world experiences in web security, penetration testing, and vulnerability research.">
+    <meta name="keywords" content="security blog, ethical hacking, bug bounty, web security, penetration testing, vulnerability research, security tools, offensive security, Pepijn van der Stap">
+    <meta name="author" content="Pepijn van der Stap">
+    <meta name="robots" content="index, follow">
+    <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <link rel="canonical" href="https://pepijnvanderstap.nl/blog/">
+    <link rel="alternate" hreflang="en" href="https://pepijnvanderstap.nl/blog/">
+    <link rel="alternate" hreflang="x-default" href="https://pepijnvanderstap.nl/blog/">
+    <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////AMzMzP/MzMz/zMzM/8zMzP/MzMz/zMzM/8zMzP/MzMz/zMzM/8zMzP/MzMz/zMzM/////wAAAAAA////AMzMzP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/8zMzP////8AAAAAAP///wDMzMz/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP/MzMz/////AAAAAAD///8AzMzM/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/zMzM/////wAAAAAA////AMzMzP8AAAD/AP8A/wD/AP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/8zMzP////8AAAAAAP///wDMzMz/zMzM/8zMzP/zMzM/8zMzP/zMzM/8zMzP/zMzM/8zMzP/zMzM/8zMzP/MzMz/////AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA//8AAP//AAD//wAA4AcAAMADAADAAwAAwAMAAMADAADAAwAAwAMAAMADAADAAwAAwAMAAOAHAAD//wAA//8AAA==">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://pepijnvanderstap.nl/blog/">
+    <meta property="og:title" content="Blog | Pepijn van der Stap - Security Research & Insights">
+    <meta property="og:description" content="Insights on security research, ethical hacking, bug bounties, and offensive security from a professional security researcher.">
+    <meta property="og:image" content="https://avatars.githubusercontent.com/u/31789984?v=4">
+    <meta property="og:image:width" content="460">
+    <meta property="og:image:height" content="460">
+    <meta property="og:image:alt" content="Pepijn van der Stap - Security Researcher">
+    <meta property="og:site_name" content="Pepijn van der Stap">
+    <meta property="og:locale" content="en_US">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Blog | Pepijn van der Stap - Security Research & Insights">
+    <meta name="twitter:description" content="Insights on security research, ethical hacking, bug bounties, and offensive security from a professional security researcher.">
+    <meta name="twitter:image" content="https://avatars.githubusercontent.com/u/31789984?v=4">
+    <meta name="twitter:image:alt" content="Pepijn van der Stap - Security Researcher">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Blog",
+        "name": "Pepijn van der Stap Security Blog",
+        "description": "Insights on security research, ethical hacking, bug bounties, and offensive security",
+        "url": "https://pepijnvanderstap.nl/blog/",
+        "inLanguage": "en",
+        "author": {
+            "@type": "Person",
+            "name": "Pepijn van der Stap",
+            "url": "https://pepijnvanderstap.nl",
+            "sameAs": [
+                "https://github.com/x-stp",
+                "https://www.linkedin.com/in/pepijn-van-der-stap-3637a2175",
+                "https://twitter.com/x_stp"
+            ]
+        },
+        "publisher": {
+            "@type": "Person",
+            "name": "Pepijn van der Stap",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://avatars.githubusercontent.com/u/31789984?v=4"
+            }
+        }
+    }
+    </script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Exo+2:wght@700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --color-black: #01020A;
+            --color-near-black: #0A0B12;
+            --color-bg: #101119;
+            --color-bg-light: #1A1B24;
+            --color-text: #EAEBF0;
+            --color-text-muted: #8892B0;
+            --color-accent-green: #00FF80;
+            --color-accent-cyan: #00FFFF;
+            --color-accent-red: #FF3B5F;
+            --color-accent-gold: #FFD700;
+            --font-primary: 'Roboto Mono', monospace;
+            --font-display: 'Exo 2', sans-serif;
+        }
+        body { background-color: var(--color-black); color: var(--color-text); font-family: var(--font-primary); }
+        .font-display { font-family: var(--font-display); }
+        .bg-black { background-color: var(--color-black); }
+        .bg-near-black { background-color: var(--color-near-black); }
+        .bg-main { background-color: var(--color-bg); }
+        .bg-light { background-color: var(--color-bg-light); }
+        .text-main { color: var(--color-text); }
+        .text-muted { color: var(--color-text-muted); }
+        .text-accent-green { color: var(--color-accent-green); }
+        .text-accent-cyan { color: var(--color-accent-cyan); }
+        .text-accent-red { color: var(--color-accent-red); }
+        .text-accent-gold { color: var(--color-accent-gold); }
+        .border-accent-green { border-color: var(--color-accent-green); }
+        .border-accent-red { border-color: var(--color-accent-red); }
+        .border-accent-gold { border-color: var(--color-accent-gold); }
+        .border-accent-cyan { border-color: var(--color-accent-cyan); }
+        .glow-green { text-shadow: 0 0 15px rgba(0, 255, 128, 0.7); }
+        .glow-red { text-shadow: 0 0 15px rgba(255, 59, 95, 0.8); }
+        .glow-gold { text-shadow: 0 0 15px rgba(255, 215, 0, 0.7); }
+        .nav-link::after { content: ''; position: absolute; width: 0; height: 2px; bottom: -4px; left: 50%; transform: translateX(-50%); background-color: var(--color-accent-green); transition: width 0.3s; }
+        .nav-link:hover::after, .nav-link.active::after { width: 100%; }
+        .github-corner:hover .octo-arm{ animation:octocat-wave 560ms ease-in-out }
+        @keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}
+        @media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}
+        .blog-post-card { 
+            border-left: 4px solid var(--color-accent-gold); 
+            transition: all 0.3s ease;
+            transform: translateX(0);
+        }
+        .blog-post-card:hover { 
+            background-color: var(--color-bg-light);
+            transform: translateX(4px);
+            box-shadow: 0 4px 20px rgba(255, 215, 0, 0.1);
+        }
+        .blog-post-card h2 { color: var(--color-accent-gold); }
+        .read-more-link {
+            color: var(--color-accent-green);
+            transition: all 0.2s;
+        }
+        .read-more-link:hover {
+            color: var(--color-accent-cyan);
+            text-decoration: underline;
+        }
+        #terminal-cursor::after { 
+            content: '█'; 
+            animation: blink 1s step-end infinite; 
+            color: var(--color-accent-gold);
+        }
+        @keyframes blink { 50% { opacity: 0; } }
+    </style>
+</head>
+<body class="bg-black text-main min-h-screen flex flex-col">
+    <!-- GitHub Corner -->
+    <a href="https://github.com/x-stp" class="github-corner" aria-label="View source on GitHub" target="_blank" rel="noopener noreferrer">
+        <svg width="80" height="80" viewBox="0 0 250 250" style="fill:var(--color-accent-green); color:var(--color-black); position: absolute; top: 0; border: 0; right: 0; z-index: 50;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg>
+    </a>
+    
+    <!-- Navigation -->
+    <nav id="navbar" class="bg-black/80 backdrop-blur-sm sticky top-0 z-40 transition-shadow duration-300">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between h-16">
+                <a href="/" class="font-display text-xl font-bold text-accent-green">Pepijn van der Stap</a>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="/#genesis" class="nav-link relative text-main hover:text-accent-green">Genesis</a>
+                    <a href="/#capabilities" class="nav-link relative text-main hover:text-accent-green">Capabilities</a>
+                    <a href="/#dispatch" class="nav-link relative text-main hover:text-accent-green">Dispatch</a>
+                    <a href="/#contribution" class="nav-link relative text-main hover:text-accent-green">Contribution</a>
+                    <a href="/blog/" class="nav-link relative text-main hover:text-accent-green active">Blog</a>
+                    <a href="/#contact" class="nav-link relative text-main hover:text-accent-green">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Header -->
+    <header class="bg-near-black py-16 px-4">
+        <div class="container mx-auto max-w-4xl">
+            <div class="text-center mb-8">
+                <h1 class="font-display text-5xl md:text-6xl font-bold text-white glow-gold mb-4">Security Blog</h1>
+                <p class="text-xl text-muted">Insights from the front lines of security research</p>
+            </div>
+            <div class="font-mono text-accent-gold text-center">
+                <span class="text-muted">$</span> cat /var/log/security/insights.log <span id="terminal-cursor"></span>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Main Content -->
+    <main class="flex-grow">
+        <section class="py-16 px-4 bg-main">
+            <div class="container mx-auto max-w-4xl">
+                <!-- Blog Posts Grid -->
+                <div class="space-y-8" id="blog-posts-container">
+                    <!-- Blog post cards will be populated here -->
+                </div>
+                
+            </div>
+        </section>
+    </main>
+    
+    <!-- Footer -->
+    <footer class="bg-black text-center py-12 px-4 mt-auto">
+        <div class="container mx-auto">
+            <div class="mb-8">
+                <a href="/" class="text-accent-green hover:text-accent-cyan transition-colors">← Back to Main Site</a>
+            </div>
+            <p class="text-muted text-sm">&copy; 2025 Pepijn van der Stap. All Rights Reserved.</p>
+        </div>
+    </footer>
+    
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Blog posts data
+        const blogPosts = [
+            {
+                title: 'The PKI Trust Paradox',
+                date: 'June 10, 2024',
+                excerpt: 'We\'ve built the internet\'s security on a foundation of trust we can\'t truly verify. Exploring the fundamental flaws in Certificate Authority systems and the path forward.',
+                url: '/blog/the-pki-trust-paradox/',
+                readTime: '6 min read',
+                tags: ['PKI', 'cryptography', 'certificate-transparency']
+            },
+            {
+                title: 'The Reality of Critical Infrastructure',
+                date: 'May 15, 2024',
+                excerpt: 'SCADA edge nodes parsing raw UDP with unchecked pointers. ICS ports opened during backbone transit with no authentication. This is the reality of our most critical systems.',
+                url: '/blog/the-reality-of-critical-infrastructure/',
+                readTime: '5 min read',
+                tags: ['SCADA', 'ICS-security', 'critical-infrastructure']
+            }
+        ];
+        
+        // Populate blog posts
+        function populateBlogPosts() {
+            const container = document.getElementById('blog-posts-container');
+            if (!container) return;
+            
+            container.innerHTML = blogPosts.map(post => `
+                <article class="blog-post-card bg-light rounded-lg p-8 hover:shadow-lg">
+                    <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                        <h2 class="font-display text-2xl md:text-3xl font-bold mb-2 md:mb-0">
+                            <a href="${post.url}" class="hover:text-accent-cyan transition-colors">
+                                ${post.title}
+                            </a>
+                        </h2>
+                        <div class="text-sm text-muted">
+                            <span>${post.date}</span>
+                            <span class="mx-2">•</span>
+                            <span>${post.readTime}</span>
+                        </div>
+                    </div>
+                    <p class="text-muted mb-4 leading-relaxed">
+                        ${post.excerpt}
+                    </p>
+                    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between">
+                        <div class="flex flex-wrap gap-2 mb-4 sm:mb-0">
+                            ${post.tags.map(tag => `
+                                <span class="text-xs bg-near-black text-accent-cyan px-3 py-1 rounded-full border border-accent-cyan/30">
+                                    #${tag}
+                                </span>
+                            `).join('')}
+                        </div>
+                        <a href="${post.url}" class="read-more-link font-mono text-sm">
+                            Read More →
+                        </a>
+                    </div>
+                </article>
+            `).join('');
+        }
+        
+        // Initialize sticky navigation shadow
+        function initStickyNav() {
+            const navbar = document.getElementById('navbar');
+            if (!navbar) return;
+            window.addEventListener('scroll', () => {
+                navbar.classList.toggle('shadow-lg', window.scrollY > 10);
+                navbar.classList.toggle('shadow-black/20', window.scrollY > 10);
+            });
+        }
+        
+        // Initialize everything
+        populateBlogPosts();
+        initStickyNav();
+    });
+    </script>
+</body>
+</html>

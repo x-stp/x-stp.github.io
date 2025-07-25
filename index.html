@@ -1,0 +1,1095 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pepijn van der Stap | Security Researcher & Protocol Engineer</title>
+    <meta name="description" content="Security researcher and protocol engineer specializing in offensive security, reverse engineering, and critical infrastructure protection. Building resilient systems through understanding both attack and defense.">
+    <meta name="keywords" content="Pepijn van der Stap, Security Researcher, Protocol Engineering, Offensive Security, ICS Security, OT Security, SCADA, Reverse Engineering, Firmware Analysis, Bug Bounty, Ethical Hacking, PKI, Certificate Transparency, Go, C, Unix, NIST CSF, ISO 27001, SOC 2, OWASP ASVS">
+    <meta name="author" content="Pepijn van der Stap">
+    <meta name="robots" content="index, follow">
+    <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <link rel="canonical" href="https://pepijnvanderstap.nl/">
+    <link rel="alternate" hreflang="en" href="https://pepijnvanderstap.nl/">
+    <link rel="alternate" hreflang="x-default" href="https://pepijnvanderstap.nl/">
+    <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////AMzMzP/MzMz/zMzM/8zMzP/MzMz/zMzM/8zMzP/MzMz/zMzM/8zMzP/MzMz/zMzM/////wAAAAAA////AMzMzP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/8zMzP////8AAAAAAP///wDMzMz/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP/MzMz/////AAAAAAD///8AzMzM/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/zMzM/////wAAAAAA////AMzMzP8AAAD/AP8A/wD/AP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/8zMzP////8AAAAAAP///wDMzMz/zMzM/8zMzP/zMzM/8zMzP/zMzM/8zMzP/zMzM/8zMzP/zMzM/8zMzP/MzMz/////AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA//8AAP//AAD//wAA4AcAAMADAADAAwAAwAMAAMADAADAAwAAwAMAAMADAADAAwAAwAMAAOAHAAD//wAA//8AAA==">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://pepijnvanderstap.nl/">
+    <meta property="og:title" content="Pepijn van der Stap - Security Researcher & Protocol Engineer">
+    <meta property="og:description" content="Security researcher and protocol engineer specializing in offensive security, reverse engineering, and critical infrastructure protection.">
+    <meta property="og:image" content="https://avatars.githubusercontent.com/u/31789984?v=4">
+    <meta property="og:image:width" content="460">
+    <meta property="og:image:height" content="460">
+    <meta property="og:image:alt" content="Pepijn van der Stap - Security Researcher">
+    <meta property="og:site_name" content="Pepijn van der Stap">
+    <meta property="og:locale" content="en_US">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Pepijn van der Stap - Security Researcher & Protocol Engineer">
+    <meta name="twitter:description" content="Security researcher and protocol engineer specializing in offensive security, reverse engineering, and critical infrastructure protection.">
+    <meta name="twitter:image" content="https://avatars.githubusercontent.com/u/31789984?v=4">
+    <meta name="twitter:image:alt" content="Pepijn van der Stap - Security Researcher">
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Person",
+            "name": "Pepijn van der Stap",
+            "alternateName": "x-stp",
+            "jobTitle": "Security Researcher & Protocol Engineer",
+            "description": "Security researcher and protocol engineer specializing in offensive security, reverse engineering, and critical infrastructure protection.",
+            "url": "https://pepijnvanderstap.nl",
+            "image": "https://avatars.githubusercontent.com/u/31789984?v=4",
+            "email": "hello@vanderstap.info",
+            "sameAs": [
+                "https://github.com/x-stp",
+                "https://www.linkedin.com/in/pepijn-van-der-stap-3637a2175",
+                "https://keybase.io/xstp",
+                "https://bugcrowd.com/xstplanet",
+                "https://hackerone.com/stplanet",
+                "https://twitter.com/x_stp"
+            ],
+            "knowsAbout": ["Security Research", "Protocol Engineering", "Offensive Security", "ICS Security", "OT Security", "SCADA", "Reverse Engineering", "Firmware Analysis", "Bug Bounty", "Responsible Disclosure", "PKI", "Certificate Transparency", "Go", "C", "Unix", "NIST CSF", "ISO 27001", "SOC 2", "OWASP ASVS"],
+            "address": {
+                "@type": "PostalAddress",
+                "addressCountry": "NL"
+            },
+            "alumniOf": {
+                "@type": "Organization",
+                "name": "Self-Taught"
+            },
+            "award": [
+                "Microsoft Security Response Center Hall of Fame",
+                "CERT-EU Hall of Fame",
+                "Dutch Government Security Acknowledgements"
+            ]
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Exo+2:wght@700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <style>
+        :root {
+            --color-black: #01020A;
+            --color-near-black: #0A0B12;
+            --color-bg: #101119;
+            --color-bg-light: #1A1B24;
+            --color-text: #EAEBF0;
+            --color-text-muted: #8892B0;
+            --color-accent-green: #00FF80;
+            --color-accent-cyan: #00FFFF;
+            --color-accent-red: #FF3B5F;
+            --color-accent-gold: #FFD700;
+            --font-primary: 'Roboto Mono', monospace;
+            --font-display: 'Exo 2', sans-serif;
+        }
+        body { background-color: var(--color-black); color: var(--color-text); font-family: var(--font-primary); }
+        .font-display { font-family: var(--font-display); }
+        .bg-black { background-color: var(--color-black); }
+        .bg-near-black { background-color: var(--color-near-black); }
+        .bg-main { background-color: var(--color-bg); }
+        .bg-light { background-color: var(--color-bg-light); }
+        .text-main { color: var(--color-text); }
+        .text-muted { color: var(--color-text-muted); }
+        .text-accent-green { color: var(--color-accent-green); }
+        .text-accent-cyan { color: var(--color-accent-cyan); }
+        .text-accent-red { color: var(--color-accent-red); }
+        .text-accent-gold { color: var(--color-accent-gold); }
+        .border-accent-green { border-color: var(--color-accent-green); }
+        .border-accent-red { border-color: var(--color-accent-red); }
+        .border-accent-gold { border-color: var(--color-accent-gold); }
+        .border-accent-cyan { border-color: var(--color-accent-cyan); }
+        .glow-green { text-shadow: 0 0 15px rgba(0, 255, 128, 0.7); }
+        .glow-red { text-shadow: 0 0 15px rgba(255, 59, 95, 0.8); }
+        #terminal-header-text::after { content: '█'; animation: blink 1s step-end infinite; }
+        @keyframes blink { 50% { opacity: 0; } }
+        .nav-link::after { content: ''; position: absolute; width: 0; height: 2px; bottom: -4px; left: 50%; transform: translateX(-50%); background-color: var(--color-accent-green); transition: width 0.3s; }
+        .nav-link:hover::after, .nav-link.active::after { width: 100%; }
+        @keyframes glitch { 2%, 64% { transform: translate(2px, 0) skew(0deg); } 4%, 60% { transform: translate(-2px, 0) skew(0deg); } 62% { transform: translate(0, 0) skew(5deg); } }
+        .phoenix-title:hover { animation: glitch 1s linear infinite; }
+        .armory-card { transform-style: preserve-3d; transition: transform 0.4s; }
+        .armory-card:hover { transform: perspective(1000px) rotateY(5deg) rotateX(5deg) scale3d(1.05, 1.05, 1.05); }
+        .github-corner:hover .octo-arm{ animation:octocat-wave 560ms ease-in-out }
+        @keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}
+        @media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}
+        .dossier-content a { color: var(--color-accent-green); }
+        .dossier-content a:hover { text-decoration: underline; color: var(--color-accent-cyan); }
+        .blog-post { border-left: 4px solid var(--color-accent-gold); transition: background-color 0.3s ease; }
+        .blog-post:hover { background-color: var(--color-bg-light); }
+        .blog-post h3 { color: var(--color-accent-gold); }
+        
+        /* Konami Code Easter Egg Styles */
+        .konami-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(1, 2, 10, 0.95);
+            z-index: 9999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(5px);
+        }
+        .konami-content {
+            background: var(--color-bg-light);
+            border: 2px solid var(--color-accent-green);
+            border-radius: 10px;
+            padding: 2rem;
+            max-width: 600px;
+            text-align: center;
+            box-shadow: 0 0 50px rgba(0, 255, 128, 0.3);
+            animation: matrixGlow 2s ease-in-out infinite alternate;
+        }
+        @keyframes matrixGlow {
+            0% { box-shadow: 0 0 50px rgba(0, 255, 128, 0.3); }
+            100% { box-shadow: 0 0 80px rgba(0, 255, 128, 0.6); }
+        }
+        .konami-title {
+            color: var(--color-accent-green);
+            font-family: var(--font-display);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 20px rgba(0, 255, 128, 0.8);
+        }
+        .konami-text {
+            color: var(--color-text);
+            font-family: var(--font-primary);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        .konami-close {
+            background: transparent;
+            border: 1px solid var(--color-accent-red);
+            color: var(--color-accent-red);
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            font-family: var(--font-primary);
+            transition: all 0.3s;
+        }
+        .konami-close:hover {
+            background: var(--color-accent-red);
+            color: var(--color-black);
+            box-shadow: 0 0 20px rgba(255, 59, 95, 0.5);
+        }
+        .secret-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        .secret-link {
+            color: var(--color-accent-cyan);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--color-accent-cyan);
+            border-radius: 5px;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+        }
+        .secret-link:hover {
+            background: var(--color-accent-cyan);
+            color: var(--color-black);
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+        }
+        
+        /* Matrix Background Animation */
+        .matrix-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.03;
+            pointer-events: none;
+        }
+        .matrix-rain {
+            position: absolute;
+            top: -100px;
+            color: var(--color-accent-green);
+            font-family: var(--font-primary);
+            font-size: 14px;
+            line-height: 1;
+            animation: matrixFall linear infinite;
+        }
+        @keyframes matrixFall {
+            to {
+                transform: translateY(calc(100vh + 100px));
+            }
+        }
+        
+        /* Hidden Terminal Styles */
+        .hidden-terminal {
+            position: fixed;
+            bottom: -400px;
+            left: 20px;
+            right: 20px;
+            height: 380px;
+            background: rgba(1, 2, 10, 0.95);
+            border: 2px solid var(--color-accent-green);
+            border-radius: 8px 8px 0 0;
+            z-index: 8888;
+            transition: bottom 0.4s ease-in-out;
+            font-family: var(--font-primary);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 -10px 30px rgba(0, 255, 128, 0.2);
+        }
+        .hidden-terminal.active {
+            bottom: 0;
+        }
+        .terminal-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 8px 15px;
+            background: var(--color-bg-light);
+            border-bottom: 1px solid var(--color-accent-green);
+            border-radius: 6px 6px 0 0;
+        }
+        .terminal-title {
+            color: var(--color-accent-green);
+            font-size: 0.9rem;
+            flex-grow: 1;
+        }
+        .terminal-controls {
+            display: flex;
+            gap: 8px;
+        }
+        .terminal-btn {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        .terminal-btn.close { background: var(--color-accent-red); }
+        .terminal-btn.minimize { background: var(--color-accent-gold); }
+        .terminal-btn.maximize { background: var(--color-accent-green); }
+        .terminal-body {
+            height: calc(100% - 40px);
+            padding: 15px;
+            overflow-y: auto;
+            color: var(--color-text);
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+        .terminal-output {
+            margin-bottom: 10px;
+        }
+        .terminal-input-line {
+            display: flex;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+        .terminal-prompt {
+            color: var(--color-accent-green);
+            margin-right: 8px;
+        }
+        .terminal-input {
+            background: transparent;
+            border: none;
+            color: var(--color-text);
+            font-family: inherit;
+            font-size: inherit;
+            flex-grow: 1;
+            outline: none;
+        }
+        .terminal-cursor {
+            background: var(--color-accent-green);
+            animation: blink 1s step-end infinite;
+        }
+        
+        /* Binary/Hex Clock */
+        .binary-clock {
+            position: fixed;
+            top: 50px;
+            right: 50px;
+            background: rgba(26, 27, 36, 0.9);
+            border: 1px solid var(--color-accent-cyan);
+            border-radius: 8px;
+            padding: 15px;
+            font-family: var(--font-primary);
+            font-size: 0.85rem;
+            color: var(--color-text);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 255, 255, 0.1);
+        }
+        .binary-clock:hover {
+            border-color: var(--color-accent-green);
+            box-shadow: 0 4px 20px rgba(0, 255, 128, 0.2);
+        }
+        .clock-mode {
+            color: var(--color-accent-cyan);
+            font-size: 0.7rem;
+            text-align: center;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .clock-time {
+            font-size: 1rem;
+            text-align: center;
+            font-weight: bold;
+            line-height: 1.3;
+            min-height: 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .clock-segment {
+            margin: 2px 0;
+        }
+        .clock-label {
+            color: var(--color-text-muted);
+            font-size: 0.7rem;
+            display: inline-block;
+            width: 20px;
+        }
+        .binary-digit {
+            display: inline-block;
+            width: 15px;
+            text-align: center;
+            color: var(--color-accent-green);
+        }
+    </style>
+</head>
+<body class="bg-black text-main">
+    <!-- Matrix Background Animation -->
+    <div id="matrix-bg" class="matrix-bg"></div>
+    
+    <!-- Binary/Hex Clock -->
+    <div id="binary-clock" class="binary-clock" onclick="toggleClockMode()">
+        <div class="clock-mode" id="clock-mode">Binary Time</div>
+        <div class="clock-time" id="clock-time">
+            <!-- Time will be populated here -->
+        </div>
+    </div>
+    <a href="https://github.com/x-stp" class="github-corner" aria-label="View source on GitHub" target="_blank" rel="noopener noreferrer">
+        <svg width="80" height="80" viewBox="0 0 250 250" style="fill:var(--color-accent-green); color:var(--color-black); position: absolute; top: 0; border: 0; right: 0; z-index: 50;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg>
+    </a>
+    <nav id="navbar" class="bg-black/80 backdrop-blur-sm sticky top-0 z-40 transition-shadow duration-300">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between h-16">
+                <a href="#" class="font-display text-xl font-bold text-accent-green">Pepijn van der Stap</a>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#genesis" class="nav-link relative text-main hover:text-accent-green">Genesis</a>
+                    <a href="#capabilities" class="nav-link relative text-main hover:text-accent-green">Capabilities</a>
+                    <a href="#dispatch" class="nav-link relative text-main hover:text-accent-green">Dispatch</a>
+                    <a href="#contribution" class="nav-link relative text-main hover:text-accent-green">Contribution</a>
+                    <a href="/blog/" class="nav-link relative text-main hover:text-accent-green">Blog</a>
+                    <a href="#contact" class="nav-link relative text-main hover:text-accent-green">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <header class="bg-near-black py-24 px-4">
+        <div id="terminal-container" class="container mx-auto max-w-4xl font-mono text-left">
+             </div>
+    </header>
+    <main>
+        <section id="genesis" class="py-24 px-4 bg-bg">
+            <div class="container mx-auto max-w-4xl text-center">
+                <h2 class="font-display text-4xl font-bold text-white mb-4 phoenix-title inline-block">My Story</h2>
+                <p class="text-muted text-lg mb-8">Curiosity has always been my compass.</p>
+                <div class="text-left text-lg space-y-6 max-w-3xl mx-auto border-t-2 border-b-2 border-accent-gold/20 py-8 dossier-content">
+                    <p>My journey hasn't been a straight line. I’ve seen security from both sides of the terminal, an experience that taught me hard lessons but ultimately gave me clarity: knowledge is for building and protecting, not breaking. My past shaped my conviction that to build the strongest defense, you must deeply understand the offense.</p>
+                    <p>It started with a spark of curiosity—the kind you get from reading books like Artemis Fowl at age nine, realizing that the world is full of complex systems waiting to be understood. This led me to a love for the elegant simplicity of Unix and the directness of languages like <strong class="text-accent-cyan">Go</strong> and <strong class="text-accent-cyan">C</strong>. I read RFCs and compliance documents with the same focus, seeing them not as dry rules, but as blueprints for creating order and security.</p>
+                    <p>Today, I apply that same deep-dive mentality to my work. Whether I’m reverse engineering firmware, analyzing a proprietary protocol, or mapping security controls to frameworks like <strong class="text-accent-gold">NIST CSF, OWASP ASVS, and ISO 27001</strong>, my goal is the same: to understand a system so completely that I can help make it resilient, secure, and trustworthy.</p>
+                </div>
+            </div>
+        </section>
+        <section id="capabilities" class="py-20 px-4 bg-near-black">
+            <div class="container mx-auto max-w-6xl">
+                <div class="text-center mb-16">
+                    <h2 class="font-display text-4xl font-bold text-white">Capabilities</h2>
+                    <p class="text-muted">My core areas of focus.</p>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8" id="armory-grid">
+                    </div>
+            </div>
+        </section>
+        <section id="dispatch" class="py-20 px-4 bg-bg">
+             <div class="container mx-auto max-w-5xl text-center">
+                <h2 class="font-display text-4xl font-bold text-white mb-4">Field Dispatch: Articles & Projects</h2>
+                <p class="text-muted text-lg mb-8">Intelligence and tooling from the front lines. A preview of a full blog to come.</p>
+                <div id="dossiers-container" class="space-y-6 text-left">
+                   </div>
+             </div>
+        </section>
+        <section id="contribution" class="py-20 px-4 bg-near-black">
+            <div class="container mx-auto max-w-5xl text-center">
+                <h2 class="font-display text-4xl font-bold text-white mb-4">A Record of Contribution</h2>
+                <p class="text-muted text-lg mb-12">I believe in using my skills to strengthen our collective digital world. To that end, I have submitted over 100,000 responsible disclosure reports throughout my career to help organizations secure their systems.</p>
+                <div class="flex flex-wrap justify-center items-center gap-x-12 sm:gap-x-16 gap-y-8 mb-12" id="wall-of-fame">
+                    </div>
+                 <div class="text-left max-w-3xl mx-auto bg-black p-6 rounded-lg border border-accent-gold/20">
+                    <h3 class="font-bold text-lg text-accent-gold mb-4">Select Acknowledgements:</h3>
+                    <div id="commendations-list" class="space-y-2">
+                        </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer id="contact" class="bg-black text-center py-16 px-4">
+        <div class="container mx-auto">
+            <h2 class="font-display text-3xl font-bold text-white mb-4">Open Secure Channel</h2>
+            <p class="text-lg text-muted mb-6">For collaborations, inquiries, or to engage my services.</p>
+            <a href="mailto:hello@vanderstap.info" class="text-accent-cyan text-2xl my-2 inline-block hover:underline font-mono">hello@vanderstap.info</a>
+            <div class="flex justify-center gap-6 mt-8" id="social-links-container">
+                </div>
+            <div class="mt-12 border-t border-gray-800 pt-8">
+                <p class="text-muted text-sm mb-2">Compliance & Protocols</p>
+                <div class="text-xs text-muted space-x-2 md:space-x-4">
+                     <a href="https://www.iso.org/standard/75281.html" target="_blank" rel="noopener noreferrer" class="hover:text-white">ISO 27001</a> •
+                     <a href="https://www.aicpa.org/resources/landing/system-and-organization-controls-soc-suite-of-services" target="_blank" rel="noopener noreferrer" class="hover:text-white">SOC 2</a> •
+                     <a href="https://www.nist.gov/cyberframework" target="_blank" rel="noopener noreferrer" class="hover:text-white">NIST CSF</a> •
+                     <a href="https://owasp.org/www-project-application-security-verification-standard/" target="_blank" rel="noopener noreferrer" class="hover:text-white">OWASP ASVS</a>
+                </div>
+            </div>
+            <p class="text-muted text-sm mt-8">&copy; 2024 Pepijn van der Stap. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Konami Code Easter Egg Modal -->
+    <div id="konami-modal" class="konami-modal">
+        <div class="konami-content">
+            <div class="konami-title">ACCESS GRANTED</div>
+            <div class="konami-text">
+                <p>Welcome to the <span class="text-accent-green">CLASSIFIED</span> section.</p>
+                <p>You've unlocked the hidden researcher's vault. Here's what most don't see:</p>
+            </div>
+            <div class="secret-links">
+                <a href="#" class="secret-link" onclick="revealSecret('exploit-db')">Exploit Archive</a>
+                <a href="#" class="secret-link" onclick="revealSecret('0day-tracker')">0-Day Tracker</a>
+                <a href="#" class="secret-link" onclick="revealSecret('threat-intel')">Threat Intel</a>
+            </div>
+            <div id="secret-content" class="konami-text" style="display: none; margin-top: 1rem; font-size: 0.9rem;">
+                <!-- Secret content will be populated here -->
+            </div>
+            <button class="konami-close" onclick="closeKonami()">DISCONNECT</button>
+        </div>
+    </div>
+
+    <!-- Hidden Terminal -->
+    <div id="hidden-terminal" class="hidden-terminal">
+        <div class="terminal-header">
+            <div class="terminal-title">PenTest Terminal v2.4.1 - Secure Shell</div>
+            <div class="terminal-controls">
+                <div class="terminal-btn minimize"></div>
+                <div class="terminal-btn maximize"></div>
+                <div class="terminal-btn close" onclick="closeTerminal()"></div>
+            </div>
+        </div>
+        <div class="terminal-body" id="terminal-body">
+            <div class="terminal-output">
+                <div>Pepijn van der Stap Security Research Terminal</div>
+                <div>Type 'help' for available commands</div>
+                <div>Last login: Thu Jul 25 2024</div>
+                <div style="margin-top: 10px;"></div>
+            </div>
+            <div class="terminal-input-line">
+                <span class="terminal-prompt">researcher@x-stp:~$</span>
+                <input type="text" class="terminal-input" id="terminal-input" autocomplete="off" spellcheck="false">
+            </div>
+        </div>
+    </div>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // --- Data ---
+    const capabilities = [
+        { title: 'Offensive Security Diagnostics', desc: 'Identifying exploitable design flaws and vulnerabilities before adversaries do, providing a clear path to remediation.', icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 mb-4 text-accent-red" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>`},
+        { title: 'Resilient Defense Architecture', desc: 'Using offensive intelligence and compliance knowledge (NIST, ISO) to architect battle-hardened, defensible networks.', icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 mb-4 text-accent-green" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>`},
+        { title: 'Firmware & Protocol Forensics', desc: 'Deconstructing embedded systems and network protocols to uncover and help fix deep, hidden vulnerabilities.', icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 mb-4 text-accent-cyan" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>`},
+        { title: 'Critical Infrastructure Protection', desc: 'Partnering with organizations to help secure the operational technology (ICS/OT) that underpins our society.', icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 mb-4 text-accent-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" /></svg>`}
+    ];
+
+    const dossiers = [
+        { type: 'article', date: 'June 10, 2024', author: 'By Pepijn van der Stap', title: 'The PKI Trust Paradox', content: `We've built the internet's security on a foundation of trust we can't truly verify. The Certificate Authority system—defined in RFC 5280 and extended by RFC 6962—is arguably flawed by design. A single compromised CA, anywhere in the world, can issue a "valid" certificate for any entity. Certificate Transparency (RFC 6962) was a reactive patch on a fractured model. The future isn't more CAs; it's systems that assume compromise, verify relentlessly, and trust nothing. It's time to stop patching RFC 5280 and start building its replacement.`, url: '/blog/the-pki-trust-paradox/' },
+        { type: 'article', date: 'May 15, 2024', author: 'By Pepijn van der Stap', title: 'The Reality of Critical Infrastructure', content: `SCADA edge nodes parsing raw UDP with unchecked pointers. ICS ports opened during backbone transit with no authentication. Full trust. This is the reality of the systems running our most critical infrastructure. Attackers don't just seek undefined behavior; they exploit the blind spots created by flawed design, outdated standards, and deliberate neglect. Metrics like CVE counts are superficial. The truth is in the protocols. If your work involves reverse-engineering firmware or fuzzing undocumented stacks, you are tackling the work that truly moves the needle.`, url: '/blog/the-reality-of-critical-infrastructure/' },
+        { type: 'project', date: 'April 2024', author: 'By Pepijn van der Stap', title: 'nuclei-parse-enrich', tech: 'Go / Automation / Recon', content: 'Enriches Nuclei JSON output with ripeSTAT/WHOIS contact information, streamlining the initial phases of engagement and responsible disclosure.', stats: {stars: '??', forks: '??'}, link: 'https://github.com/x-stp/nuclei-parse-enrich' },
+        { type: 'project', date: 'March 2024', author: 'By Pepijn van der Stap', title: 'deduplicatz', tech: 'C / Performance / Data Processing', content: 'Remove duplicates smarter, not harder. Uses xxhash to process massive datasets like Rapid7 FDNS or ZGRAB2 output with minimal memory overhead. Torch terabytes of data clean, fast.', stats: {stars: 6, forks: 0}, link: 'https://github.com/x-stp/deduplicatz' }
+    ];
+
+    const recognitions = [
+        { name: 'Microsoft', title: 'Microsoft Security Response Center', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Microsoft_logo.svg/1200px-Microsoft_logo.svg.png', class: 'h-10 sm:h-12' },
+        { name: 'CERT-EU', title: 'CERT-EU', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Flag_of_Europe.svg/1200px-Flag_of_Europe.svg.png', class: 'h-10 smh-12' },
+        { name: 'Dutch Government', title: 'VNG/IBD', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Flag_of_the_Netherlands.svg/1200px-Flag_of_the_Netherlands.svg.png', class: 'h-10 sm:h-12' },
+        { name: 'HackerOne', title: 'HackerOne', logo: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjQwIiBoZWlnaHQ9IjQwIiByeD0iNCIgZmlsbD0iIzAwRkY4MCIvPgo8cGF0aCBkPSJNMTIgMThIMTZWMjJIMTJWMThaTTI0IDE4SDI4VjIySDI0VjE4WiIgZmlsbD0iIzAwMDAwMCIvPgo8L3N2Zz4K', class: 'h-6 sm:h-8' }
+    ];
+
+    const commendations = [
+        { title: 'Microsoft Security Response Center', subtitle: 'For critical vulnerability research & disclosures.' },
+        { title: 'CERT-EU', subtitle: 'Acknowledgement for contributions to European infrastructure security.', link: 'https://cert.europa.eu/hall-of-fame' },
+        { title: 'Association of Netherlands Municipalities (IBD)', subtitle: 'Multiple acknowledgements for securing national digital services.', link: 'https://www.informatiebeveiligingsdienst.nl/responsible-disclosure' },
+        { title: "s-Heeren Loo", subtitle: "For helping to secure systems in the Dutch healthcare sector.", link: 'https://www.sheerenloo.nl/over-de-website/coordinated-vulnerability-disclosure#hall-of-fame' },
+        { title: 'Freedom Internet', subtitle: 'For contributions to national infrastructure security.', link: 'https://freedom.nl/coordinated-vulnerability-disclosure/hackers-hall-of-fame' }
+    ];
+
+    const socialLinks = [
+        { label: 'GitHub', href: 'https://github.com/x-stp', icon: `<svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>` },
+        { label: 'LinkedIn', href: 'https://www.linkedin.com/in/pepijn-van-der-stap-3637a2175', icon: `<svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>` },
+        { label: 'Keybase', href: 'https://keybase.io/xstp', icon: `<svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M10.446 21.371c0 .528-.428.953-.954.953-.525 0-.954-.425-.954-.953 0-.526.428-.954.953-.954.524 0 .951.431.951.955m5.922-.001c0 .528-.428.953-.955.953-.526 0-.952-.425-.952-.953 0-.526.423-.954.949-.954s.954.431.954.955"/><path d="M20.904 12.213l-.156-.204c-.046-.06-.096-.116-.143-.175-.045-.061-.094-.113-.141-.169-.104-.12-.209-.239-.319-.359l-.076-.08-.091-.099-.135-.131c-.015-.018-.032-.034-.05-.053-1.16-1.139-2.505-1.986-3.955-2.504l-.23-.078c.012-.027.024-.055.035-.083.41-1.064.367-2.223-.12-3.255-.491-1.035-1.356-1.8-2.438-2.16-.656-.216-1.23-.319-1.711-.305-.033-.105-.1-.577.496-1.848L10.663 0l-.287.399c-.33.455-.648.895-.945 1.328-.328-.345-.766-.552-1.245-.58L6.79 1.061h-.012c-.033-.003-.07-.003-.104-.003-.99 0-1.81.771-1.87 1.755l-.088 1.402v.003c-.061 1.029.727 1.915 1.755 1.979l1.002.061c-.065.84.073 1.62.405 2.306-1.346.562-2.586 1.401-3.66 2.484C.913 14.391.913 18.051.913 20.994v1.775l1.305-1.387c.266.93.652 1.807 1.145 2.615H5.06c-.833-1.114-1.419-2.426-1.68-3.848l1.913-2.03-.985 3.091 1.74-1.268c3.075-2.234 6.744-2.75 10.91-1.529 1.805.532 3.56.039 4.473-1.257l.104-.165c.091.498.141.998.141 1.496 0 1.563-.255 3.687-1.38 5.512h1.611c.776-1.563 1.181-3.432 1.181-5.512-.001-2.199-.786-4.421-2.184-6.274zM8.894 6.191c.123-1.002.578-1.949 1.23-2.97.025.05.054.097.084.144.264.398.713.625 1.199.605.217-.008.605.025 1.233.232.714.236 1.286.744 1.608 1.425s.349 1.442.079 2.149c-.173.445-.454.82-.806 1.109l-.408-.502-.002-.003c-.279-.341-.694-.535-1.134-.535-.335 0-.664.117-.925.33-.334.27-.514.66-.534 1.058-1.2-.541-1.8-1.643-1.628-3.041l.004-.001zm4.304 5.11l-.519.425c-.046.036-.095.053-.146.053-.066 0-.133-.03-.177-.085l-.111-.135c-.083-.1-.067-.25.034-.334l.51-.42-1.055-1.299c-.109-.133-.091-.33.044-.436.058-.048.126-.072.194-.072.091 0 .181.038.24.113l2.963 3.645c.109.135.09.33-.042.436-.039.029-.082.053-.126.063-.023.006-.045.009-.07.009-.09 0-.178-.04-.24-.113l-.295-.365-1.045.854c-.046.037-.1.055-.154.055-.068 0-.139-.03-.186-.09l-.477-.579c-.082-.102-.068-.252.035-.336l1.051-.857-.426-.533-.002.001zM7.753 4.866l-1.196-.075c-.255-.015-.45-.235-.435-.488l.09-1.401c.014-.245.216-.436.461-.436h.024l1.401.091c.123.006.236.06.317.152.083.094.123.21.116.336l-.007.101c-.32.567-.585 1.134-.773 1.72h.002zm12.524 11.481c-.565.805-1.687 1.081-2.924.718-3.886-1.141-7.396-.903-10.468.701l1.636-5.123-5.291 5.609c.099-3.762 2.453-6.966 5.758-8.311.471.373 1.034.66 1.673.841.16.044.322.074.48.102-.183.458-.119.997.21 1.407l.075.09c-.172.45-.105.975.221 1.374l.475.582c.266.325.659.513 1.079.513.321 0 .635-.111.886-.314l.285-.232c.174.074.367.113.566.113.113 0 .222-.01.33-.035.218-.05.424-.15.598-.291.623-.51.72-1.435.209-2.06l-1.67-2.056c.145-.117.281-.244.408-.381.135.037.271.078.4.12.266.097.533.198.795.315 1.005.445 1.954 1.1 2.771 1.897.029.03.059.055.085.083l.17.175c.038.039.076.079.111.12.079.085.16.175.239.267l.126.15c.045.053.086.104.13.16l.114.15c.04.051.079.102.117.154.838 1.149.987 2.329.404 3.157v.005z"/><path d="M7.719 4.115l-.835-.051.053-.835.834.051-.052.835z"/></svg>` }
+    ];
+
+    // --- Populate DOM ---
+    function populateArmory() {
+        const container = document.getElementById('armory-grid');
+        if (!container) return;
+        container.innerHTML = capabilities.map(c => {
+            let borderColor = 'border-accent-gold';
+            if (c.title.includes('Offensive')) borderColor = 'border-accent-red';
+            if (c.title.includes('Defense')) borderColor = 'border-accent-green';
+            if (c.title.includes('Forensics')) borderColor = 'border-accent-cyan';
+            return `
+            <div class="bg-bg-light p-6 rounded-lg border-l-4 ${borderColor} flex flex-col armory-card">
+                <div>${c.icon}</div>
+                <h3 class="font-bold text-xl text-white mb-2">${c.title}</h3>
+                <p class="text-muted flex-grow">${c.desc}</p>
+            </div>
+        `}).join('');
+    }
+
+    function populateDossiers() {
+        const container = document.getElementById('dossiers-container');
+        if (!container) return;
+        container.innerHTML = dossiers.map(d => {
+            const cardColor = d.type === 'project' ? 'border-accent-green' : 'border-accent-gold';
+            const titleColor = d.type === 'project' ? 'text-accent-green' : 'text-accent-gold';
+
+            const byline = `<p class="text-xs text-muted">${d.author} • ${d.date}</p>`;
+
+            if (d.type === 'project') {
+                return `
+                <div class="bg-light rounded-lg overflow-hidden p-6 my-4 border-l-4 ${cardColor} transition-colors hover:bg-near-black">
+                     <div class="flex justify-between items-baseline mb-2">
+                        <h3 class="font-bold text-xl ${titleColor}">${d.title}</h3>
+                        <p class="text-sm text-accent-cyan font-mono">${d.tech}</p>
+                     </div>
+                     ${byline}
+                     <p class="text-muted my-4">${d.content}</p>
+                     <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-4 text-muted text-sm">
+                            <span>⭐ ${d.stats.stars}</span>
+                            <span><svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 inline-block -mt-1" viewBox="0 0 16 16"><path fill="currentColor" fill-rule="evenodd" d="M5 3.25a.75.75 0 1 1-1.5 0a.75.75 0 0 1 1.5 0m0 2.122a2.25 2.25 0 1 0-1.5 0v.878A2.25 2.25 0 0 0 5.75 8.5h1.5v2.128a2.251 2.251 0 1 0 1.5 0V8.5h1.5a2.25 2.25 0 0 0 2.25-2.25v-.878a2.25 2.25 0 1 0-1.5 0v.878a.75.75 0 0 1-.75.75h-4.5A.75.75 0 0 1 5 6.25zM11 12.75a.75.75 0 1 1 1.5 0a.75.75 0 0 1-1.5 0m-6.5-4a.75.75 0 1 0 0-1.5a.75.75 0 0 0 0 1.5"/></svg> ${d.stats.forks}</span>
+                        </div>
+                        <a href="${d.link}" target="_blank" rel="noopener noreferrer" class="text-accent-green hover:underline">
+                            View Project &rarr;
+                        </a>
+                     </div>
+                </div>`;
+            } else { // article
+                return `
+                <div class="bg-light rounded-lg overflow-hidden p-6 my-4 border-l-4 ${cardColor} transition-colors hover:bg-near-black dossier-content">
+                    <h3 class="font-bold text-xl ${titleColor} mb-2">${d.title}</h3>
+                    ${byline}
+                    <p class="text-muted mt-4">${d.content}</p>
+                    ${d.url ? `<a href="${d.url}" class="text-accent-green hover:text-accent-cyan text-sm mt-2 inline-block">Read More &rarr;</a>` : ''}
+                </div>`;
+            }
+        }).join('');
+    }
+
+    function populateRecognition() {
+        const logoContainer = document.getElementById('wall-of-fame');
+        if (logoContainer) {
+            logoContainer.innerHTML = recognitions.map(r => `
+                <img src="${r.logo}" alt="${r.name}" title="${r.title}" class="${r.class} filter grayscale hover:grayscale-0 transition-all duration-300">
+            `).join('');
+        }
+
+        const commendationsContainer = document.getElementById('commendations-list');
+        if (commendationsContainer) {
+            commendationsContainer.innerHTML = commendations.map(c => `
+                 <div class="contribution-card rounded-lg overflow-hidden py-2">
+                    <p class="font-bold text-main">${c.title}</p>
+                    <div class="pl-4">
+                        <p class="text-muted">${c.subtitle}</p>
+                        ${c.link ? `<a href="${c.link}" rel="nofollow noopener noreferrer" target="_blank" class="text-accent-green text-sm hover:underline">View Acknowledgement &rarr;</a>` : ''}
+                    </div>
+                </div>
+            `).join('');
+        }
+    }
+
+    function populateSocials() {
+        const container = document.getElementById('social-links-container');
+        if (!container) return;
+        container.innerHTML = socialLinks.map(s => `<a href="${s.href}" target="_blank" rel="noopener noreferrer" aria-label="${s.label}" class="text-muted hover:text-white transition-colors">${s.icon}</a>`).join('');
+    }
+
+    // --- Animations and Effects ---
+    function terminalAnimation() {
+        const container = document.getElementById('terminal-container');
+        if (!container) return;
+        const lines = [
+            { text: 'Initializing subsystems... [OK]', delay: 500, speed: 20, class: 'text-muted' },
+            { text: 'Loading profile: pepijn.vanderstap/init', delay: 300, speed: 30, class: 'text-accent-green' },
+            { text: 'Pepijn van der Stap', delay: 100, speed: 50, class: 'font-display text-5xl md:text-7xl font-bold text-white glow-green mb-4', isH1: true },
+            { text: 'Security Research & Protocol Engineering', delay: 100, speed: 40, class: 'text-xl md:text-2xl text-accent-cyan', hasPrompt: true }
+        ];
+        let lineIndex = 0;
+
+        function typeLine() {
+            if (lineIndex >= lines.length) return;
+            const line = lines[lineIndex];
+            const el = document.createElement(line.isH1 ? 'h1' : 'div');
+            el.className = line.class;
+            container.appendChild(el);
+            let contentEl = el;
+
+            if (line.hasPrompt) {
+                const prompt = document.createElement('span');
+                prompt.textContent = '> ';
+                el.appendChild(prompt);
+                const textSpan = document.createElement('span');
+                textSpan.id = 'terminal-header-text';
+                el.appendChild(textSpan);
+                contentEl = textSpan;
+            }
+
+            let charIndex = 0;
+            function typeChar() {
+                if (charIndex < line.text.length) {
+                    contentEl.textContent += line.text.charAt(charIndex);
+                    charIndex++;
+                    setTimeout(typeChar, line.speed);
+                } else {
+                    lineIndex++;
+                    setTimeout(typeLine, line.delay);
+                }
+            }
+            typeChar();
+        }
+        typeLine();
+    }
+
+    function initStickyNav() {
+        const navbar = document.getElementById('navbar');
+        if (!navbar) return;
+        window.addEventListener('scroll', () => {
+            navbar.classList.toggle('shadow-lg', window.scrollY > 10);
+            navbar.classList.toggle('shadow-black/20', window.scrollY > 10);
+        });
+    }
+
+    // --- Konami Code Easter Egg ---
+    const konamiSequence = [
+        'ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown',
+        'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight',
+        'KeyB', 'KeyA'
+    ];
+    let userSequence = [];
+    let konamiTimeout;
+
+    function resetKonamiSequence() {
+        userSequence = [];
+        clearTimeout(konamiTimeout);
+    }
+
+    function checkKonamiCode(key) {
+        clearTimeout(konamiTimeout);
+        
+        if (key === konamiSequence[userSequence.length]) {
+            userSequence.push(key);
+            
+            if (userSequence.length === konamiSequence.length) {
+                activateKonamiCode();
+                resetKonamiSequence();
+                return;
+            }
+        } else {
+            resetKonamiSequence();
+        }
+        
+        // Reset sequence after 3 seconds of inactivity
+        konamiTimeout = setTimeout(resetKonamiSequence, 3000);
+    }
+
+    function activateKonamiCode() {
+        document.getElementById('konami-modal').style.display = 'flex';
+        // Add terminal-like sound effect simulation
+        console.log('⚡ KONAMI CODE ACTIVATED ⚡');
+        console.log('Access Level: MAXIMUM');
+        console.log('Researcher Mode: ENGAGED');
+    }
+
+    document.addEventListener('keydown', function(e) {
+        checkKonamiCode(e.code);
+    });
+
+    window.closeKonami = function() {
+        document.getElementById('konami-modal').style.display = 'none';
+        document.getElementById('secret-content').style.display = 'none';
+    };
+
+    window.revealSecret = function(type) {
+        const secretContent = document.getElementById('secret-content');
+        let content = '';
+        
+        switch(type) {
+            case 'exploit-db':
+                content = `
+                    <div class="text-accent-red font-bold mb-2">[CLASSIFIED] Exploit Database Access</div>
+                    <p>• 47 zero-day exploits cataloged for critical infrastructure</p>
+                    <p>• ICS/SCADA firmware analysis results: 23 RCE vulnerabilities</p>
+                    <p>• Certificate pinning bypasses for 15 major banking applications</p>
+                    <p>• Supply chain attack vectors: 8 compromised npm packages identified</p>
+                    <p class="text-accent-gold mt-2">Note: Used exclusively for defensive research and responsible disclosure</p>
+                `;
+                break;
+            case '0day-tracker':
+                content = `
+                    <div class="text-accent-cyan font-bold mb-2">[CLASSIFIED] 0-Day Intelligence Feed</div>
+                    <p>• CVE-2024-XXXXX: RCE in popular VPN software (Disclosed: Private)</p>
+                    <p>• Authentication bypass in Fortune 500 payment processor</p>
+                    <p>• Critical SQLi in widely-used CMS (Coordinated disclosure in progress)</p>
+                    <p>• Nation-state APT techniques observed in the wild</p>
+                    <p class="text-accent-gold mt-2">All vulnerabilities reported through responsible disclosure channels</p>
+                `;
+                break;
+            case 'threat-intel':
+                content = `
+                    <div class="text-accent-gold font-bold mb-2">[CLASSIFIED] Threat Intelligence Network</div>
+                    <p>• Real-time C2 infrastructure monitoring across 15 countries</p>
+                    <p>• Malware family attribution analysis using ML techniques</p>
+                    <p>• Dark web monitoring for leaked credentials and data breaches</p>
+                    <p>• IoC correlation with OSINT sources for threat hunting</p>
+                    <p class="text-accent-green mt-2">Shared with law enforcement and security community</p>
+                `;
+                break;
+        }
+        
+        secretContent.innerHTML = content;
+        secretContent.style.display = 'block';
+    };
+
+    // --- Matrix Background Animation ---
+    function createMatrix() {
+        const matrixBg = document.getElementById('matrix-bg');
+        const characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%^&*()_+-=[]{}|;:,.<>?';
+        
+        function createRainDrop() {
+            const drop = document.createElement('div');
+            drop.className = 'matrix-rain';
+            drop.style.left = Math.random() * 100 + 'vw';
+            drop.style.animationDuration = (Math.random() * 3 + 2) + 's';
+            drop.style.opacity = Math.random() * 0.5 + 0.1;
+            
+            // Generate random string of characters
+            let text = '';
+            const length = Math.floor(Math.random() * 10) + 5;
+            for (let i = 0; i < length; i++) {
+                text += characters.charAt(Math.floor(Math.random() * characters.length)) + '<br>';
+            }
+            drop.innerHTML = text;
+            
+            matrixBg.appendChild(drop);
+            
+            // Remove drop after animation completes
+            setTimeout(() => {
+                if (drop.parentNode) {
+                    drop.parentNode.removeChild(drop);
+                }
+            }, 5000);
+        }
+        
+        // Create initial drops
+        for (let i = 0; i < 20; i++) {
+            setTimeout(createRainDrop, i * 200);
+        }
+        
+        // Continue creating drops
+        setInterval(createRainDrop, 300);
+    }
+
+    // --- Hidden Terminal ---
+    let terminalHistory = [];
+    let historyIndex = -1;
+
+    const terminalCommands = {
+        help: () => `Available commands:
+  help          - Show this help message
+  whoami        - Display current user information
+  nmap          - Simulate network scanning
+  sqlmap        - Simulate SQL injection testing
+  exploit       - Access exploit database
+  steganography - Extract hidden data
+  hash          - Generate hashes
+  base64        - Encode/decode base64
+  clear         - Clear terminal
+  exit          - Close terminal`,
+        
+        whoami: () => `researcher@x-stp
+UID: 1337 (researcher) GID: 1337 (pentesters)
+Groups: wheel, security, hackers
+Clearance Level: TOP SECRET
+Specializations: Web App Security, Network Pentesting, ICS/SCADA, Firmware Analysis`,
+
+        nmap: (args) => {
+            const target = args || 'example.com';
+            return `Starting Nmap scan on ${target}...
+Host is up (0.021s latency).
+PORT     STATE SERVICE  VERSION
+22/tcp   open  ssh      OpenSSH 8.9
+80/tcp   open  http     nginx 1.18.0
+443/tcp  open  https    nginx 1.18.0
+3306/tcp open  mysql    MySQL 8.0.32
+Service detection performed. Scan completed.`;
+        },
+
+        sqlmap: (args) => {
+            const url = args || 'http://target.com/login.php';
+            return `SQLMap v1.7.2 - Automatic SQL injection tool
+Target URL: ${url}
+[INFO] Testing connection to target URL
+[INFO] Testing if parameter 'id' is injectable
+[CRITICAL] SQL injection vulnerability found!
+Parameter: id (GET)
+Type: boolean-based blind
+Payload: id=1' AND 1=1 AND 'a'='a
+[WARNING] Exploit for demonstration only - report responsibly!`;
+        },
+
+        exploit: () => `Exploit Database Access:
+[1] CVE-2024-1337 - Remote Code Execution in CMS
+[2] CVE-2024-31337 - Privilege Escalation via Buffer Overflow  
+[3] Authentication bypass in popular framework
+[4] SSRF in cloud metadata services
+[5] Directory traversal in file upload functionality
+Use 'exploit [number]' for details.`,
+
+        steganography: () => `Steganography Analysis Tool v3.1
+[+] Scanning images for hidden data...
+[+] Found: secret.txt embedded in image metadata
+[+] Extracting: "The real treasure is the vulnerabilities we found along the way"
+[+] LSB analysis complete - no additional data found`,
+
+        hash: (args) => {
+            const input = args || 'security';
+            return `Hash Generator:
+Input: "${input}"
+MD5:    ${btoa(input).slice(0, 16)}...
+SHA1:   ${btoa(input + 'sha1').slice(0, 20)}...
+SHA256: ${btoa(input + 'sha256').slice(0, 32)}...
+NTLM:   ${btoa(input + 'ntlm').slice(0, 16)}...`;
+        },
+
+        base64: (args) => {
+            const input = args || 'hello world';
+            try {
+                if (input.match(/^[A-Za-z0-9+/]*={0,2}$/)) {
+                    return `Base64 Decode: "${atob(input)}"`;
+                } else {
+                    return `Base64 Encode: "${btoa(input)}"`;
+                }
+            } catch {
+                return `Base64 Encode: "${btoa(input)}"`;
+            }
+        },
+
+        clear: () => 'CLEAR_TERMINAL',
+        exit: () => 'EXIT_TERMINAL'
+    };
+
+    function executeCommand(command, args) {
+        const cmd = command.toLowerCase();
+        if (terminalCommands[cmd]) {
+            return terminalCommands[cmd](args);
+        } else {
+            return `Command not found: ${command}
+Type 'help' for available commands.`;
+        }
+    }
+
+    function addTerminalOutput(output) {
+        const terminalBody = document.getElementById('terminal-body');
+        const outputDiv = document.createElement('div');
+        outputDiv.className = 'terminal-output';
+        outputDiv.innerHTML = output.replace(/\n/g, '<br>');
+        
+        // Insert before the input line
+        const inputLine = terminalBody.querySelector('.terminal-input-line');
+        terminalBody.insertBefore(outputDiv, inputLine);
+        
+        // Scroll to bottom
+        terminalBody.scrollTop = terminalBody.scrollHeight;
+    }
+
+    function clearTerminal() {
+        const terminalBody = document.getElementById('terminal-body');
+        const outputs = terminalBody.querySelectorAll('.terminal-output');
+        outputs.forEach(output => output.remove());
+    }
+
+    document.addEventListener('keydown', function(e) {
+        // Ctrl+` to toggle terminal
+        if (e.ctrlKey && e.key === '`') {
+            e.preventDefault();
+            const terminal = document.getElementById('hidden-terminal');
+            terminal.classList.toggle('active');
+            if (terminal.classList.contains('active')) {
+                document.getElementById('terminal-input').focus();
+            }
+        }
+    });
+
+    // Terminal input handling
+    document.getElementById('terminal-input').addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') {
+            const input = this.value.trim();
+            if (input) {
+                // Add command to history
+                terminalHistory.unshift(input);
+                historyIndex = -1;
+                
+                // Add command to output
+                addTerminalOutput(`<span class="terminal-prompt">researcher@x-stp:~$</span> ${input}`);
+                
+                // Parse command and arguments
+                const parts = input.split(' ');
+                const command = parts[0];
+                const args = parts.slice(1).join(' ');
+                
+                // Execute command
+                const result = executeCommand(command, args);
+                
+                if (result === 'CLEAR_TERMINAL') {
+                    clearTerminal();
+                } else if (result === 'EXIT_TERMINAL') {
+                    closeTerminal();
+                } else {
+                    addTerminalOutput(result);
+                }
+            }
+            this.value = '';
+        } else if (e.key === 'ArrowUp') {
+            e.preventDefault();
+            if (historyIndex < terminalHistory.length - 1) {
+                historyIndex++;
+                this.value = terminalHistory[historyIndex];
+            }
+        } else if (e.key === 'ArrowDown') {
+            e.preventDefault();
+            if (historyIndex > 0) {
+                historyIndex--;
+                this.value = terminalHistory[historyIndex];
+            } else if (historyIndex === 0) {
+                historyIndex = -1;
+                this.value = '';
+            }
+        }
+    });
+
+    window.closeTerminal = function() {
+        document.getElementById('hidden-terminal').classList.remove('active');
+    };
+
+    // --- Binary/Hex Clock ---
+    let clockMode = 0; // 0: binary, 1: hex, 2: octal, 3: decimal
+    const clockModes = ['Binary Time', 'Hexadecimal Time', 'Octal Time', 'Unix Timestamp'];
+    
+    function padZero(num, length) {
+        return num.toString().padStart(length, '0');
+    }
+    
+    function toBinary(num, bits = 8) {
+        return num.toString(2).padStart(bits, '0');
+    }
+    
+    function toHex(num) {
+        return num.toString(16).toUpperCase().padStart(2, '0');
+    }
+    
+    function toOctal(num) {
+        return num.toString(8).padStart(3, '0');
+    }
+    
+    function updateClock() {
+        const now = new Date();
+        const hours = now.getHours();
+        const minutes = now.getMinutes();
+        const seconds = now.getSeconds();
+        
+        const clockTimeDiv = document.getElementById('clock-time');
+        let timeDisplay = '';
+        
+        switch(clockMode) {
+            case 0: // Binary
+                timeDisplay = `
+                    <div class="clock-segment">
+                        <span class="clock-label">H:</span>
+                        ${toBinary(hours, 6).split('').map(d => `<span class="binary-digit">${d}</span>`).join('')}
+                    </div>
+                    <div class="clock-segment">
+                        <span class="clock-label">M:</span>
+                        ${toBinary(minutes, 6).split('').map(d => `<span class="binary-digit">${d}</span>`).join('')}
+                    </div>
+                    <div class="clock-segment">
+                        <span class="clock-label">S:</span>
+                        ${toBinary(seconds, 6).split('').map(d => `<span class="binary-digit">${d}</span>`).join('')}
+                    </div>
+                `;
+                break;
+            case 1: // Hex
+                timeDisplay = `
+                    <div style="font-size: 1.2rem; color: var(--color-accent-gold);">
+                        0x${toHex(hours)}:${toHex(minutes)}:${toHex(seconds)}
+                    </div>
+                    <div style="font-size: 0.8rem; color: var(--color-text-muted); margin-top: 5px;">
+                        ${hours}h ${minutes}m ${seconds}s
+                    </div>
+                `;
+                break;
+            case 2: // Octal
+                timeDisplay = `
+                    <div style="font-size: 1.1rem; color: var(--color-accent-cyan);">
+                        ${toOctal(hours)} : ${toOctal(minutes)} : ${toOctal(seconds)}
+                    </div>
+                    <div style="font-size: 0.8rem; color: var(--color-text-muted); margin-top: 5px;">
+                        Base-8 Time Format
+                    </div>
+                `;
+                break;
+            case 3: // Unix Timestamp
+                const timestamp = Math.floor(now.getTime() / 1000);
+                timeDisplay = `
+                    <div style="font-size: 1rem; color: var(--color-accent-green);">
+                        ${timestamp}
+                    </div>
+                    <div style="font-size: 0.7rem; color: var(--color-text-muted); margin-top: 5px;">
+                        Seconds since epoch<br>
+                        (Jan 1, 1970 UTC)
+                    </div>
+                `;
+                break;
+        }
+        
+        clockTimeDiv.innerHTML = timeDisplay;
+    }
+    
+    window.toggleClockMode = function() {
+        clockMode = (clockMode + 1) % clockModes.length;
+        document.getElementById('clock-mode').textContent = clockModes[clockMode];
+        updateClock();
+    };
+    
+    // Update clock every second
+    setInterval(updateClock, 1000);
+    updateClock(); // Initial call
+
+    // --- Run everything ---
+    terminalAnimation();
+    populateArmory();
+    populateDossiers();
+    populateRecognition();
+    populateSocials();
+    initStickyNav();
+    createMatrix();
+});
+</script>
+</body>
+</html>
