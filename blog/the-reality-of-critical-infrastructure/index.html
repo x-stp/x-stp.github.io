@@ -22,8 +22,8 @@
     <meta property="og:site_name" content="Pepijn van der Stap">
     <meta property="og:locale" content="en_US">
     <meta property="article:author" content="Pepijn van der Stap">
-    <meta property="article:published_time" content="2024-05-15T00:00:00Z">
-    <meta property="article:modified_time" content="2024-05-15T00:00:00Z">
+    <meta property="article:published_time" content="2025-05-15T00:00:00Z">
+    <meta property="article:modified_time" content="2025-05-15T00:00:00Z">
     <meta property="article:tag" content="SCADA">
     <meta property="article:tag" content="ICS security">
     <meta property="article:tag" content="critical infrastructure">
@@ -38,8 +38,8 @@
         "headline": "The Reality of Critical Infrastructure",
         "description": "SCADA edge nodes parsing raw UDP with unchecked pointers. ICS ports opened during backbone transit with no authentication. This is the reality of our most critical systems.",
         "image": "https://avatars.githubusercontent.com/u/31789984?v=4",
-        "datePublished": "2024-05-15T00:00:00Z",
-        "dateModified": "2024-05-15T00:00:00Z",
+        "datePublished": "2025-05-15T00:00:00Z",
+        "dateModified": "2025-05-15T00:00:00Z",
         "author": {
             "@type": "Person",
             "name": "Pepijn van der Stap",
@@ -139,7 +139,7 @@
                 <div class="flex flex-wrap justify-center items-center gap-4 text-muted mb-6">
                     <span>By Pepijn van der Stap</span>
                     <span>•</span>
-                    <time datetime="2024-05-15">May 15, 2024</time>
+                    <time datetime="2025-05-15">May 15, 2025</time>
                     <span>•</span>
                     <span>5 min read</span>
                 </div>
@@ -166,7 +166,7 @@
                 </p>
 
                 <p>
-                    **Modbus TCP** carries no authentication. **DNP3** can be configured with security features, but they're rarely enabled because they break legacy compatibility. **IEC 61850** promised cryptographic protection for electrical substations, but most implementations still run in cleartext.
+                    <strong>Modbus TCP</strong> carries no authentication. <strong>DNP3</strong> can be configured with security features, but they're rarely enabled because they break legacy compatibility. <strong>IEC 61850</strong> promised cryptographic protection for electrical substations, but most implementations still run in cleartext.
                 </p>
 
                 <p>
@@ -206,7 +206,7 @@
                 </p>
 
                 <p>
-                    **Every Modbus command is trusted.** There's no authentication, no encryption, no replay protection. If you can reach the device, you can control it. This isn't a vulnerability—it's the protocol working as designed.
+                    <strong>Every Modbus command is trusted.</strong> There's no authentication, no encryption, no replay protection. If you can reach the device, you can control it. This isn't a vulnerability—it's the protocol working as designed.
                 </p>
 
                 <h3>DNP3: Security as an Afterthought</h3>
@@ -216,7 +216,7 @@
                 </p>
 
                 <p>
-                    **Security that's optional isn't security.** It's a checkbox for compliance auditors.
+                    <strong>Security that's optional isn't security.</strong> It's a checkbox for compliance auditors.
                 </p>
 
                 <h3>OPC UA: The New Hope</h3>
@@ -232,11 +232,11 @@
                 <h2>The Physics Problem</h2>
 
                 <p>
-                    Industrial control systems have a fundamental constraint that IT systems don't: **physics**. If a safety system doesn't respond within 100 milliseconds, people die. If a power grid stabilization algorithm is delayed by cryptographic overhead, cascading failures can black out entire regions.
+                    Industrial control systems have a fundamental constraint that IT systems don't: <strong>physics</strong>. If a safety system doesn't respond within 100 milliseconds, people die. If a power grid stabilization algorithm is delayed by cryptographic overhead, cascading failures can black out entire regions.
                 </p>
 
                 <p>
-                    This isn't theoretical. The 2003 Northeast blackout started with a software bug in an alarm system. The 2010 Brazil blackout was triggered by operational errors during maintenance. **Reliability and security are often in direct conflict.**
+                    This isn't theoretical. The 2003 Northeast blackout started with a software bug in an alarm system. The 2010 Brazil blackout was triggered by operational errors during maintenance. <strong>Reliability and security are often in direct conflict.</strong>
                 </p>
 
                 <h2>What Real Security Looks Like</h2>
@@ -258,7 +258,7 @@
                 <h3>The Long Game</h3>
 
                 <p>
-                    Real change requires replacing protocols, not patching them. **IEC 62443** provides a framework for secure-by-design industrial systems. **NERC CIP** mandates security controls for bulk electric systems. But both are relatively new standards fighting against decades of legacy infrastructure.
+                    Real change requires replacing protocols, not patching them. <strong>IEC 62443</strong> provides a framework for secure-by-design industrial systems. <strong>NERC CIP</strong> mandates security controls for bulk electric systems. But both are relatively new standards fighting against decades of legacy infrastructure.
                 </p>
 
                 <p>
@@ -272,7 +272,7 @@
                 </p>
 
                 <p>
-                    **The stakes are higher. The timelines are longer. The resistance to change is stronger.** But the impact of getting it right is civilization-scale.
+                    <<strong>The stakes are higher. The timelines are longer. The resistance to change is stronger.</strong> But the impact of getting it right is civilization-scale.
                 </p>
 
                 <div class="mt-12 p-6 bg-light rounded-lg border-l-4 border-accent-red">
@@ -297,7 +297,7 @@
 
     <footer class="bg-near-black text-center py-8 px-4 mt-16">
         <div class="container mx-auto">
-            <p class="text-muted">&copy; 2024 Pepijn van der Stap. All Rights Reserved.</p>
+            <p class="text-muted">&copy; 2025 Pepijn van der Stap. All Rights Reserved.</p>
         </div>
     </footer>
 </body>
