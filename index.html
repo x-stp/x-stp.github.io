@@ -101,7 +101,6 @@
         .border-accent-cyan { border-color: var(--color-accent-cyan); }
         .glow-green { text-shadow: 0 0 15px rgba(0, 255, 128, 0.7); }
         .glow-red { text-shadow: 0 0 15px rgba(255, 59, 95, 0.8); }
-        #terminal-header-text::after { content: '█'; animation: blink 1s step-end infinite; }
         @keyframes blink { 50% { opacity: 0; } }
         .nav-link::after { content: ''; position: absolute; width: 0; height: 2px; bottom: -4px; left: 50%; transform: translateX(-50%); background-color: var(--color-accent-green); transition: width 0.3s; }
         .nav-link:hover::after, .nav-link.active::after { width: 100%; }
@@ -220,86 +219,6 @@
             }
         }
         
-        /* Hidden Terminal Styles */
-        .hidden-terminal {
-            position: fixed;
-            bottom: -400px;
-            left: 20px;
-            right: 20px;
-            height: 380px;
-            background: rgba(1, 2, 10, 0.95);
-            border: 2px solid var(--color-accent-green);
-            border-radius: 8px 8px 0 0;
-            z-index: 8888;
-            transition: bottom 0.4s ease-in-out;
-            font-family: var(--font-primary);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 -10px 30px rgba(0, 255, 128, 0.2);
-        }
-        .hidden-terminal.active {
-            bottom: 0;
-        }
-        .terminal-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 8px 15px;
-            background: var(--color-bg-light);
-            border-bottom: 1px solid var(--color-accent-green);
-            border-radius: 6px 6px 0 0;
-        }
-        .terminal-title {
-            color: var(--color-accent-green);
-            font-size: 0.9rem;
-            flex-grow: 1;
-        }
-        .terminal-controls {
-            display: flex;
-            gap: 8px;
-        }
-        .terminal-btn {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            cursor: pointer;
-        }
-        .terminal-btn.close { background: var(--color-accent-red); }
-        .terminal-btn.minimize { background: var(--color-accent-gold); }
-        .terminal-btn.maximize { background: var(--color-accent-green); }
-        .terminal-body {
-            height: calc(100% - 40px);
-            padding: 15px;
-            overflow-y: auto;
-            color: var(--color-text);
-            font-size: 0.9rem;
-            line-height: 1.4;
-        }
-        .terminal-output {
-            margin-bottom: 10px;
-        }
-        .terminal-input-line {
-            display: flex;
-            align-items: center;
-            margin-bottom: 5px;
-        }
-        .terminal-prompt {
-            color: var(--color-accent-green);
-            margin-right: 8px;
-        }
-        .terminal-input {
-            background: transparent;
-            border: none;
-            color: var(--color-text);
-            font-family: inherit;
-            font-size: inherit;
-            flex-grow: 1;
-            outline: none;
-        }
-        .terminal-cursor {
-            background: var(--color-accent-green);
-            animation: blink 1s step-end infinite;
-        }
-        
         /* Binary/Hex Clock */
         .binary-clock {
             position: fixed;
@@ -377,8 +296,10 @@
         </div>
     </nav>
     <header class="bg-near-black py-24 px-4">
-        <div id="terminal-container" class="container mx-auto max-w-4xl font-mono text-left">
-             </div>
+        <div class="container mx-auto max-w-4xl font-mono text-left">
+             <h1 class="font-display text-5xl md:text-7xl font-bold text-white glow-green mb-4">Pepijn van der Stap</h1>
+             <div class="text-xl md:text-2xl text-accent-cyan">Security Research & Protocol Engineering</div>
+        </div>
     </header>
     <main>
         <section id="genesis" class="py-24 px-4 bg-bg">
@@ -399,7 +320,7 @@
                     <p class="text-muted">My core areas of focus.</p>
                 </div>
                 <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8" id="armory-grid">
-                    </div>
+                </div>
             </div>
         </section>
         <section id="dispatch" class="py-20 px-4 bg-bg">
@@ -407,7 +328,7 @@
                 <h2 class="font-display text-4xl font-bold text-white mb-4">Field Dispatch: Articles & Projects</h2>
                 <p class="text-muted text-lg mb-8">Intelligence and tooling from the front lines. A preview of a full blog to come.</p>
                 <div id="dossiers-container" class="space-y-6 text-left">
-                   </div>
+                </div>
              </div>
         </section>
         <section id="contribution" class="py-20 px-4 bg-near-black">
@@ -415,11 +336,11 @@
                 <h2 class="font-display text-4xl font-bold text-white mb-4">A Record of Contribution</h2>
                 <p class="text-muted text-lg mb-12">I believe in using my skills to strengthen our collective digital world. To that end, I have submitted over 100,000 responsible disclosure reports throughout my career to help organizations secure their systems.</p>
                 <div class="flex flex-wrap justify-center items-center gap-x-12 sm:gap-x-16 gap-y-8 mb-12" id="wall-of-fame">
-                    </div>
+                </div>
                  <div class="text-left max-w-3xl mx-auto bg-black p-6 rounded-lg border border-accent-gold/20">
                     <h3 class="font-bold text-lg text-accent-gold mb-4">Select Acknowledgements:</h3>
                     <div id="commendations-list" class="space-y-2">
-                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -430,7 +351,7 @@
             <p class="text-lg text-muted mb-6">For collaborations, inquiries, or to engage my services.</p>
             <a href="mailto:hello@vanderstap.info" class="text-accent-cyan text-2xl my-2 inline-block hover:underline font-mono">hello@vanderstap.info</a>
             <div class="flex justify-center gap-6 mt-8" id="social-links-container">
-                </div>
+            </div>
             <div class="mt-12 border-t border-gray-800 pt-8">
                 <p class="text-muted text-sm mb-2">Compliance & Protocols</p>
                 <div class="text-xs text-muted space-x-2 md:space-x-4">
@@ -444,7 +365,6 @@
         </div>
     </footer>
 
-    <!-- Konami Code Easter Egg Modal -->
     <div id="konami-modal" class="konami-modal">
         <div class="konami-content">
             <div class="konami-title">ACCESS GRANTED</div>
@@ -458,11 +378,11 @@
                 <a href="#" class="secret-link" onclick="revealSecret('threat-intel')">Threat Intel</a>
             </div>
             <div id="secret-content" class="konami-text" style="display: none; margin-top: 1rem; font-size: 0.9rem;">
-                <!-- Secret content will be populated here -->
-            </div>
+                </div>
             <button class="konami-close" onclick="closeKonami()">DISCONNECT</button>
         </div>
     </div>
+    
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     // --- Data ---
@@ -587,52 +507,6 @@ document.addEventListener('DOMContentLoaded', function() {
         container.innerHTML = socialLinks.map(s => `<a href="${s.href}" target="_blank" rel="noopener noreferrer" aria-label="${s.label}" class="text-muted hover:text-white transition-colors">${s.icon}</a>`).join('');
     }
 
-    // --- Animations and Effects ---
-    function terminalAnimation() {
-        const container = document.getElementById('terminal-container');
-        if (!container) return;
-        const lines = [
-            { text: 'Initializing subsystems... [OK]', delay: 500, speed: 20, class: 'text-muted' },
-            { text: 'Loading profile: pepijn.vanderstap/init', delay: 300, speed: 30, class: 'text-accent-green' },
-            { text: 'Pepijn van der Stap', delay: 100, speed: 50, class: 'font-display text-5xl md:text-7xl font-bold text-white glow-green mb-4', isH1: true },
-            { text: 'Security Research & Protocol Engineering', delay: 100, speed: 40, class: 'text-xl md:text-2xl text-accent-cyan', hasPrompt: true }
-        ];
-        let lineIndex = 0;
-
-        function typeLine() {
-            if (lineIndex >= lines.length) return;
-            const line = lines[lineIndex];
-            const el = document.createElement(line.isH1 ? 'h1' : 'div');
-            el.className = line.class;
-            container.appendChild(el);
-            let contentEl = el;
-
-            if (line.hasPrompt) {
-                const prompt = document.createElement('span');
-                prompt.textContent = '> ';
-                el.appendChild(prompt);
-                const textSpan = document.createElement('span');
-                textSpan.id = 'terminal-header-text';
-                el.appendChild(textSpan);
-                contentEl = textSpan;
-            }
-
-            let charIndex = 0;
-            function typeChar() {
-                if (charIndex < line.text.length) {
-                    contentEl.textContent += line.text.charAt(charIndex);
-                    charIndex++;
-                    setTimeout(typeChar, line.speed);
-                } else {
-                    lineIndex++;
-                    setTimeout(typeLine, line.delay);
-                }
-            }
-            typeChar();
-        }
-        typeLine();
-    }
-
     function initStickyNav() {
         const navbar = document.getElementById('navbar');
         if (!navbar) return;
@@ -671,16 +545,11 @@ document.addEventListener('DOMContentLoaded', function() {
             resetKonamiSequence();
         }
         
-        // Reset sequence after 3 seconds of inactivity
         konamiTimeout = setTimeout(resetKonamiSequence, 3000);
     }
 
     function activateKonamiCode() {
         document.getElementById('konami-modal').style.display = 'flex';
-        // Add terminal-like sound effect simulation
-        console.log('⚡ KONAMI CODE ACTIVATED ⚡');
-        console.log('Access Level: MAXIMUM');
-        console.log('Researcher Mode: ENGAGED');
     }
 
     document.addEventListener('keydown', function(e) {
@@ -735,7 +604,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // --- Matrix Background Animation ---
     function createMatrix() {
-        const matrixBg = document.getElementById('matrix-bg');
+        const matrixBg = document.createElement('div');
+        matrixBg.id = 'matrix-bg';
+        matrixBg.className = 'matrix-bg';
+        document.body.prepend(matrixBg);
+
         const characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%^&*()_+-=[]{}|;:,.<>?';
         
         function createRainDrop() {
@@ -745,7 +618,6 @@ document.addEventListener('DOMContentLoaded', function() {
             drop.style.animationDuration = (Math.random() * 3 + 2) + 's';
             drop.style.opacity = Math.random() * 0.5 + 0.1;
             
-            // Generate random string of characters
             let text = '';
             const length = Math.floor(Math.random() * 10) + 5;
             for (let i = 0; i < length; i++) {
@@ -755,7 +627,6 @@ document.addEventListener('DOMContentLoaded', function() {
             
             matrixBg.appendChild(drop);
             
-            // Remove drop after animation completes
             setTimeout(() => {
                 if (drop.parentNode) {
                     drop.parentNode.removeChild(drop);
@@ -763,201 +634,31 @@ document.addEventListener('DOMContentLoaded', function() {
             }, 5000);
         }
         
-        // Create initial drops
         for (let i = 0; i < 20; i++) {
             setTimeout(createRainDrop, i * 200);
         }
         
-        // Continue creating drops
         setInterval(createRainDrop, 300);
     }
-
-    // --- Hidden Terminal ---
-    let terminalHistory = [];
-    let historyIndex = -1;
-
-    const terminalCommands = {
-        help: () => `Available commands:
-  help          - Show this help message
-  whoami        - Display current user information
-  nmap          - Simulate network scanning
-  sqlmap        - Simulate SQL injection testing
-  exploit       - Access exploit database
-  steganography - Extract hidden data
-  hash          - Generate hashes
-  base64        - Encode/decode base64
-  clear         - Clear terminal
-  exit          - Close terminal`,
-        
-        whoami: () => `researcher@x-stp
-UID: 1337 (researcher) GID: 1337 (pentesters)
-Groups: wheel, security, hackers
-Clearance Level: TOP SECRET
-Specializations: Web App Security, Network Pentesting, ICS/SCADA, Firmware Analysis`,
-
-        nmap: (args) => {
-            const target = args || 'example.com';
-            return `Starting Nmap scan on ${target}...
-Host is up (0.021s latency).
-PORT     STATE SERVICE  VERSION
-22/tcp   open  ssh      OpenSSH 8.9
-80/tcp   open  http     nginx 1.18.0
-443/tcp  open  https    nginx 1.18.0
-3306/tcp open  mysql    MySQL 8.0.32
-Service detection performed. Scan completed.`;
-        },
-
-        sqlmap: (args) => {
-            const url = args || 'http://target.com/login.php';
-            return `SQLMap v1.7.2 - Automatic SQL injection tool
-Target URL: ${url}
-[INFO] Testing connection to target URL
-[INFO] Testing if parameter 'id' is injectable
-[CRITICAL] SQL injection vulnerability found!
-Parameter: id (GET)
-Type: boolean-based blind
-Payload: id=1' AND 1=1 AND 'a'='a
-[WARNING] Exploit for demonstration only - report responsibly!`;
-        },
-
-        exploit: () => `Exploit Database Access:
-[1] CVE-2024-1337 - Remote Code Execution in CMS
-[2] CVE-2024-31337 - Privilege Escalation via Buffer Overflow  
-[3] Authentication bypass in popular framework
-[4] SSRF in cloud metadata services
-[5] Directory traversal in file upload functionality
-Use 'exploit [number]' for details.`,
-
-        steganography: () => `Steganography Analysis Tool v3.1
-[+] Scanning images for hidden data...
-[+] Found: secret.txt embedded in image metadata
-[+] Extracting: "The real treasure is the vulnerabilities we found along the way"
-[+] LSB analysis complete - no additional data found`,
-
-        hash: (args) => {
-            const input = args || 'security';
-            return `Hash Generator:
-Input: "${input}"
-MD5:    ${btoa(input).slice(0, 16)}...
-SHA1:   ${btoa(input + 'sha1').slice(0, 20)}...
-SHA256: ${btoa(input + 'sha256').slice(0, 32)}...
-NTLM:   ${btoa(input + 'ntlm').slice(0, 16)}...`;
-        },
-
-        base64: (args) => {
-            const input = args || 'hello world';
-            try {
-                if (input.match(/^[A-Za-z0-9+/]*={0,2}$/)) {
-                    return `Base64 Decode: "${atob(input)}"`;
-                } else {
-                    return `Base64 Encode: "${btoa(input)}"`;
-                }
-            } catch {
-                return `Base64 Encode: "${btoa(input)}"`;
-            }
-        },
-
-        clear: () => 'CLEAR_TERMINAL',
-        exit: () => 'EXIT_TERMINAL'
-    };
-
-    function executeCommand(command, args) {
-        const cmd = command.toLowerCase();
-        if (terminalCommands[cmd]) {
-            return terminalCommands[cmd](args);
-        } else {
-            return `Command not found: ${command}
-Type 'help' for available commands.`;
-        }
-    }
-
-    function addTerminalOutput(output) {
-        const terminalBody = document.getElementById('terminal-body');
-        const outputDiv = document.createElement('div');
-        outputDiv.className = 'terminal-output';
-        outputDiv.innerHTML = output.replace(/\n/g, '<br>');
-        
-        // Insert before the input line
-        const inputLine = terminalBody.querySelector('.terminal-input-line');
-        terminalBody.insertBefore(outputDiv, inputLine);
-        
-        // Scroll to bottom
-        terminalBody.scrollTop = terminalBody.scrollHeight;
-    }
-
-    function clearTerminal() {
-        const terminalBody = document.getElementById('terminal-body');
-        const outputs = terminalBody.querySelectorAll('.terminal-output');
-        outputs.forEach(output => output.remove());
-    }
-
-    document.addEventListener('keydown', function(e) {
-        // Ctrl+` to toggle terminal
-        if (e.ctrlKey && e.key === '`') {
-            e.preventDefault();
-            const terminal = document.getElementById('hidden-terminal');
-            terminal.classList.toggle('active');
-            if (terminal.classList.contains('active')) {
-                document.getElementById('terminal-input').focus();
-            }
-        }
-    });
-
-    // Terminal input handling
-    document.getElementById('terminal-input').addEventListener('keydown', function(e) {
-        if (e.key === 'Enter') {
-            const input = this.value.trim();
-            if (input) {
-                // Add command to history
-                terminalHistory.unshift(input);
-                historyIndex = -1;
-                
-                // Add command to output
-                addTerminalOutput(`<span class="terminal-prompt">researcher@x-stp:~$</span> ${input}`);
-                
-                // Parse command and arguments
-                const parts = input.split(' ');
-                const command = parts[0];
-                const args = parts.slice(1).join(' ');
-                
-                // Execute command
-                const result = executeCommand(command, args);
-                
-                if (result === 'CLEAR_TERMINAL') {
-                    clearTerminal();
-                } else if (result === 'EXIT_TERMINAL') {
-                    closeTerminal();
-                } else {
-                    addTerminalOutput(result);
-                }
-            }
-            this.value = '';
-        } else if (e.key === 'ArrowUp') {
-            e.preventDefault();
-            if (historyIndex < terminalHistory.length - 1) {
-                historyIndex++;
-                this.value = terminalHistory[historyIndex];
-            }
-        } else if (e.key === 'ArrowDown') {
-            e.preventDefault();
-            if (historyIndex > 0) {
-                historyIndex--;
-                this.value = terminalHistory[historyIndex];
-            } else if (historyIndex === 0) {
-                historyIndex = -1;
-                this.value = '';
-            }
-        }
-    });
-
-    window.closeTerminal = function() {
-        document.getElementById('hidden-terminal').classList.remove('active');
-    };
 
     // --- Binary/Hex Clock ---
     let clockMode = 0; // 0: binary, 1: hex, 2: octal, 3: decimal
     const clockModes = ['Binary Time', 'Hexadecimal Time', 'Octal Time', 'Unix Timestamp'];
     
+    function initClock() {
+        const clockDiv = document.createElement('div');
+        clockDiv.className = 'binary-clock';
+        clockDiv.id = 'binary-clock';
+        clockDiv.onclick = () => toggleClockMode();
+        clockDiv.innerHTML = `
+            <div id="clock-mode" class="clock-mode">${clockModes[0]}</div>
+            <div id="clock-time" class="clock-time"></div>
+        `;
+        document.body.appendChild(clockDiv);
+        setInterval(updateClock, 1000);
+        updateClock(); // Initial call
+    }
+
     function padZero(num, length) {
         return num.toString().padStart(length, '0');
     }
@@ -981,6 +682,7 @@ Type 'help' for available commands.`;
         const seconds = now.getSeconds();
         
         const clockTimeDiv = document.getElementById('clock-time');
+        if (!clockTimeDiv) return;
         let timeDisplay = '';
         
         switch(clockMode) {
@@ -1039,22 +741,21 @@ Type 'help' for available commands.`;
     
     window.toggleClockMode = function() {
         clockMode = (clockMode + 1) % clockModes.length;
-        document.getElementById('clock-mode').textContent = clockModes[clockMode];
+        const clockModeDiv = document.getElementById('clock-mode');
+        if (clockModeDiv) {
+            clockModeDiv.textContent = clockModes[clockMode];
+        }
         updateClock();
     };
-    
-    // Update clock every second
-    setInterval(updateClock, 1000);
-    updateClock(); // Initial call
 
     // --- Run everything ---
-    terminalAnimation();
     populateArmory();
     populateDossiers();
     populateRecognition();
     populateSocials();
     initStickyNav();
     createMatrix();
+    initClock();
 });
 </script>
 </body>
