@@ -462,14 +462,6 @@
                 <p>Welcome to the <span class="text-accent-green">CLASSIFIED</span> section.</p>
                 <p>You've unlocked the hidden researcher's vault. Here's what most don't see:</p>
             </div>
-            <div class="secret-links">
-                <a href="#" class="secret-link" onclick="revealSecret('exploit-db')">Exploit Archive</a>
-                <a href="#" class="secret-link" onclick="revealSecret('0day-tracker')">0-Day Tracker</a>
-                <a href="#" class="secret-link" onclick="revealSecret('threat-intel')">Threat Intel</a>
-            </div>
-            <div id="secret-content" class="konami-text" style="display: none; margin-top: 1rem; font-size: 0.9rem;">
-                <!-- Secret content will be populated here -->
-            </div>
             <button class="konami-close" onclick="closeKonami()">DISCONNECT</button>
         </div>
     </div>
@@ -726,46 +718,6 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('secret-content').style.display = 'none';
     };
 
-    window.revealSecret = function(type) {
-        const secretContent = document.getElementById('secret-content');
-        let content = '';
-        
-        switch(type) {
-            case 'exploit-db':
-                content = `
-                    <div class="text-accent-red font-bold mb-2">[CLASSIFIED] Exploit Database Access</div>
-                    <p>• 47 zero-day exploits cataloged for critical infrastructure</p>
-                    <p>• ICS/SCADA firmware analysis results: 23 RCE vulnerabilities</p>
-                    <p>• Certificate pinning bypasses for 15 major banking applications</p>
-                    <p>• Supply chain attack vectors: 8 compromised npm packages identified</p>
-                    <p class="text-accent-gold mt-2">Note: Used exclusively for defensive research and responsible disclosure</p>
-                `;
-                break;
-            case '0day-tracker':
-                content = `
-                    <div class="text-accent-cyan font-bold mb-2">[CLASSIFIED] 0-Day Intelligence Feed</div>
-                    <p>• CVE-2024-XXXXX: RCE in popular VPN software (Disclosed: Private)</p>
-                    <p>• Authentication bypass in Fortune 500 payment processor</p>
-                    <p>• Critical SQLi in widely-used CMS (Coordinated disclosure in progress)</p>
-                    <p>• Nation-state APT techniques observed in the wild</p>
-                    <p class="text-accent-gold mt-2">All vulnerabilities reported through responsible disclosure channels</p>
-                `;
-                break;
-            case 'threat-intel':
-                content = `
-                    <div class="text-accent-gold font-bold mb-2">[CLASSIFIED] Threat Intelligence Network</div>
-                    <p>• Real-time C2 infrastructure monitoring across 15 countries</p>
-                    <p>• Malware family attribution analysis using ML techniques</p>
-                    <p>• Dark web monitoring for leaked credentials and data breaches</p>
-                    <p>• IoC correlation with OSINT sources for threat hunting</p>
-                    <p class="text-accent-green mt-2">Shared with law enforcement and security community</p>
-                `;
-                break;
-        }
-        
-        secretContent.innerHTML = content;
-        secretContent.style.display = 'block';
-    };
 
     // --- Matrix Background Animation ---
     function createMatrix() {
@@ -815,9 +767,6 @@ document.addEventListener('DOMContentLoaded', function() {
   help          - Show this help message
   whoami        - Display current user information
   nmap          - Simulate network scanning
-  sqlmap        - Simulate SQL injection testing
-  exploit       - Access exploit database
-  steganography - Extract hidden data
   hash          - Generate hashes
   base64        - Encode/decode base64
   clear         - Clear terminal
@@ -841,32 +790,6 @@ PORT     STATE SERVICE  VERSION
 Service detection performed. Scan completed.`;
         },
 
-        sqlmap: (args) => {
-            const url = args || 'http://target.com/login.php';
-            return `SQLMap v1.7.2 - Automatic SQL injection tool
-Target URL: ${url}
-[INFO] Testing connection to target URL
-[INFO] Testing if parameter 'id' is injectable
-[CRITICAL] SQL injection vulnerability found!
-Parameter: id (GET)
-Type: boolean-based blind
-Payload: id=1' AND 1=1 AND 'a'='a
-[WARNING] Exploit for demonstration only - report responsibly!`;
-        },
-
-        exploit: () => `Exploit Database Access:
-[1] CVE-2024-1337 - Remote Code Execution in CMS
-[2] CVE-2024-31337 - Privilege Escalation via Buffer Overflow  
-[3] Authentication bypass in popular framework
-[4] SSRF in cloud metadata services
-[5] Directory traversal in file upload functionality
-Use 'exploit [number]' for details.`,
-
-        steganography: () => `Steganography Analysis Tool v3.1
-[+] Scanning images for hidden data...
-[+] Found: secret.txt embedded in image metadata
-[+] Extracting: "The real treasure is the vulnerabilities we found along the way"
-[+] LSB analysis complete - no additional data found`,
 
         hash: (args) => {
             const input = args || 'security';
